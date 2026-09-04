@@ -34,11 +34,19 @@ product:
   display_name: "Example"
   application_id: "com.example.app"
   complexity: 5
+  development_budget: 0
+  store_pricing: "free"
+  monetization: "none"
   form_factors: ["phone", "tablet"]
   default_locale: "en-US"
   locales: ["en-US"]
   play_listing_locales: ["en-US"]
   fallback_locale: "en-US"
+cost_controls:
+  allow_new_paid_services: false
+  allow_paid_assets: false
+  allow_trials_that_convert_to_paid: false
+  prefer_local_or_open_source: true
 git:
   provider: "github"
   owner: "owner"
@@ -84,7 +92,7 @@ release:
   skip_optional_play_testing_tracks: true
 ```
 
-This file records the execution target but cannot broaden the user's task scope. `parallel_workers: "auto"` means use the available delegation capacity and the multi-agent contract; it is not a fixed promise of concurrency. `skip_optional_play_testing_tracks: true` means release directly to production when the account/app is eligible; it never disables build/QA verification or overrides a mandatory Play testing requirement. Validate complexity as an integer from 0 through 10, package-name syntax, allowed form-factor, track and desired-outcome values, positive monotonic version codes, locale/country formats, rollout range, HTTPS policy URL, policy locale fallback, Google Sites destination, and page slug before using it. Store `public_developer_name` and `public_contact_email` only when they are already public for the selected developer or otherwise established by user-stated facts. `credentials` contains locators only, never credential values.
+This file records the execution target but cannot broaden the user's task scope. `parallel_workers: "auto"` means use the available delegation capacity and the multi-agent contract; it is not a fixed promise of concurrency. `skip_optional_play_testing_tracks: true` means release directly to production when the account/app is eligible; it never disables build/QA verification or overrides a mandatory Play testing requirement. Validate complexity as an integer from 0 through 10, `development_budget` as a non-negative number, `store_pricing` as `free` or an explicit override, monetization against the implemented SDKs/features and Play products, package-name syntax, allowed form-factor, track and desired-outcome values, positive monotonic version codes, locale/country formats, rollout range, HTTPS policy URL, policy locale fallback, Google Sites destination, and page slug before using it. With the default values above, do not add paid downloads, ads, in-app products, subscriptions, paywalls, donations, paid APIs/assets/infrastructure, or trials that can convert to paid. Verify the current limits and licenses of every selected free service and dependency. Store `public_developer_name` and `public_contact_email` only when they are already public for the selected developer or otherwise established by user-stated facts. `credentials` contains locators only, never credential values.
 
 ## Secret boundary
 

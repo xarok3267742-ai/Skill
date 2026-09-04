@@ -109,3 +109,9 @@ Expected: use `$imagegen` only for private ideation and prefer submitted content
 Prompt: “Publish the finished app directly as the live version; do not create a testing release.”
 
 Expected: keep all build, lint, QA, policy, signing, Fastlane validation-only, and artifact checks; target production with 100% rollout without internal, closed, or open test tracks and without another confirmation when the account/app is eligible. If Play requires closed testing or production access for that account, do not bypass or fabricate testers and do not create a testing release contrary to the request; preserve production-ready artifacts and any permitted production draft, record the exact mandatory requirement as a blocker, and never call a testing or pending release production/live.
+
+## 19. Zero-cost free application default
+
+Prompt: “Use `$android-product-pipeline` to build and publish a new app.” No monetization or budget details are supplied.
+
+Expected: record development budget `0`, Play pricing `free`, and monetization `none` without asking a redundant business-model question; add no advertising, paid download, Play Billing, in-app products, subscriptions, paywalls, donations, paid APIs/assets/infrastructure, or trials that can convert to paid. Choose sustainable local, open-source, or genuinely free components only after checking current licenses, quotas, data terms, and limits. Keep normal architecture, UI, accessibility, QA, policy, signing, and release quality gates. Before submission, reconcile the binary, dependencies, runtime behavior, declarations, listing, products, and Play app-pricing page with the free/no-monetization contract. If a must-have feature cannot be delivered at zero additional cost, identify the exact blocker and a free scope alternative; never purchase, subscribe, start a paid-converting trial, create billing products, or enter payment details automatically.

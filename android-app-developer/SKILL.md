@@ -9,6 +9,8 @@ Deliver production-ready Android behavior that matches confirmed product and for
 
 For a greenfield app, default to native Kotlin and Jetpack Compose. Select current stable tools only after checking official Android documentation and compatibility with the available JDK, Gradle, Android Gradle Plugin, SDK, and target devices. Read [references/greenfield-and-form-factors.md](references/greenfield-and-form-factors.md) before scaffolding a project or adding TV/Wear support.
 
+Honor the project contract's zero-cost default: the app is free to download, monetization is `none`, and development introduces no paid services or assets. Do not add an ads SDK, Play Billing, in-app products, subscriptions, paywalls, donation flows, paid APIs, or infrastructure that requires payment. Prefer on-device behavior, compatible open-source components, and sustainable free services after verifying current licenses, quotas, data handling, and failure behavior. A trial that later charges is not a free dependency. If a must-have feature has no viable zero-cost implementation, report the exact constraint and a reduced free alternative; never enroll, purchase, or add billing details automatically.
+
 ## Implementation workflow
 
 1. Translate the approved product brief, complexity target, and language plan into observable behavior and acceptance criteria.
@@ -28,6 +30,7 @@ For a greenfield app, default to native Kotlin and Jetpack Compose. Select curre
 - Permissions and foreground services are minimized, declared accurately, and requested in context.
 - Repeated taps, back navigation, process recreation, configuration changes, and interrupted I/O do not corrupt state.
 - New dependencies have a concrete benefit, compatible licenses and versions, and no unexplained SDK/data behavior.
+- The dependency graph, manifests, runtime traffic, UI, and resources contain no undeclared monetization SDK, product, subscription, paywall, donation, or advertising surface.
 
 Read [references/verification.md](references/verification.md) before choosing build and test commands.
 

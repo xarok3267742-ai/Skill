@@ -4,7 +4,9 @@ Build on discovered facts and never make the user repeat repository information.
 
 ## Product block
 
-Establish the product name, primary audience, user problem, success event, must-have journey, excluded scope, business model, launch deadline, and any regulated or trust-sensitive domain. Ask for examples or competitors only if the desired behavior remains ambiguous.
+Establish the product name, primary audience, user problem, success event, must-have journey, excluded scope, launch deadline, and any regulated or trust-sensitive domain. Apply these defaults without asking a monetization question: development budget `0`, free store download, and monetization `none`. That excludes paid downloads, ads, in-app products, subscriptions, paywalls, donations, paid APIs, paid assets, and new paid infrastructure. Ask about the business model only when the requested behavior contradicts these defaults or the user explicitly wants monetization. Ask for examples or competitors only if the desired behavior remains ambiguous.
+
+Prefer local processing, compatible open-source dependencies, and genuinely free services. Verify current free-tier limits, licensing, quotas, data terms, and operational fit before selection; do not treat a time-limited trial as free. Existing user-owned paid infrastructure is out of the default scope unless the user explicitly assigns it to the app. If an essential requirement cannot be delivered sustainably at zero additional cost, record the exact feature, provider, limit, and cost as a blocker or propose a free scope adjustment. Never purchase, upgrade, subscribe, or enter billing details automatically.
 
 Ask the user to choose a development-complexity target from 0 to 10 and explain it in product terms:
 
@@ -24,7 +26,7 @@ Mark the observed email and developer name as discovered. Prefer a developer nam
 
 ## Platform and experience block
 
-Resolve phone/tablet, Android TV, Wear OS, or a combination; minimum supported devices; orientation; offline behavior; account model; accessibility constraints; brand inputs; notifications; background work; billing; ads; media; user-generated content; and third-party services. Ask conditional questions only when a feature makes them relevant.
+Resolve phone/tablet, Android TV, Wear OS, or a combination; minimum supported devices; orientation; offline behavior; account model; accessibility constraints; brand inputs; notifications; background work; media; user-generated content; and third-party services. Keep billing and ads absent under the zero-cost default; investigate them only when an explicit app requirement overrides that default. Ask conditional questions only when a feature makes them relevant.
 
 For languages, record the default in-app locale, every supported interface/content locale, Google Play listing locales, fallback locale, whether content differs by market, and whether any locale requires RTL or specialized typography. Distinguish launch locales from later localization. Never assume that the user's conversation language is the app's default language.
 
@@ -56,7 +58,7 @@ Keep a compact decision record in `repo/docs/product-brief.md` and non-secret au
 
 After research and before remote mutation, show one execution brief containing:
 
-1. product, complexity score, form factors, languages, package ID, and selected differentiation;
+1. product, complexity score, development budget, store pricing, monetization, form factors, languages, package ID, and selected differentiation;
 2. GitHub owner/repository/visibility, branch/PR strategy, policy source path, drafting tool, Google Sites destination or alternative host, canonical policy URL, and any repository/site creation;
 3. version, build variant, upload certificate, signed-tag identity, and CI secrets to configure;
 4. Play developer account, app, Octo profile, track, countries, rollout, managed publishing, and declarations to submit;
