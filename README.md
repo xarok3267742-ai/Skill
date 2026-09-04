@@ -1,12 +1,13 @@
 # Android Product Pipeline skill pack
 
-Seven Codex skills coordinate Android product discovery, competitor research, UI/UX, Kotlin/Compose implementation, QA, Google Play policy and ASO review, GitHub delivery, signed AAB builds, public privacy-policy deployment, and idempotent release through an authorized Octo Browser profile.
+Eight Codex skills coordinate Android product discovery, competitor research, UI/UX, Android layout engineering, Kotlin/Compose implementation, QA, Google Play policy and ASO review, GitHub delivery, signed AAB builds, public privacy-policy deployment, and idempotent release through an authorized Octo Browser profile.
 
 ## Skills
 
 - `android-product-pipeline` — end-to-end orchestrator
 - `android-app-developer` — phone, tablet, Android TV, and Wear OS implementation
 - `mobile-ui-ux-designer` — implementation-ready flows and design systems
+- `android-ui-layout-engineer` — precise adaptive layout implementation and rendered visual verification
 - `android-qa-engineer` — test strategy and release evidence
 - `google-play-policy-reviewer` — current policy and declaration review
 - `google-play-aso-expert` — competitor research, listing, localization, and creatives

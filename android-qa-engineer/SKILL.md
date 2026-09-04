@@ -33,4 +33,6 @@ Read [references/execution.md](references/execution.md) for evidence and defect 
 
 ## Completion
 
+Consume the rendered layout matrix and comparison evidence from `$android-ui-layout-engineer`, then independently cover the highest-risk visual states during functional execution. Return reproducible layout defects to that stage without treating a passing screenshot diff as proof of correct behavior.
+
 Report scope, complexity target, environments, locales, passed/failed journeys, defects by severity, blocked checks, evidence, and release recommendation. The recommendation must reflect tested scope and residual risk; never infer coverage that was not executed.

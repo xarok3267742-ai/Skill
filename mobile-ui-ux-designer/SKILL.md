@@ -26,3 +26,5 @@ Choose the smallest useful artifact: journey, wireframe, high-fidelity screen, c
 Play listing screenshots must be truthful captures from the tested app. Do not use image generation to fabricate implemented functionality. Connect every recommendation to a user or business outcome and clearly label hypotheses.
 
 Avoid invented brand facts, inaccessible contrast, tiny targets, placeholder copy in final designs, unsafe destructive actions, and novelty that obscures primary tasks.
+
+Hand the approved reference, semantic tokens, responsive rules, real localized content, component states, and measurable acceptance criteria to `$android-ui-layout-engineer`. That skill owns implementation and rendered visual comparison; this skill owns the product experience and design intent.

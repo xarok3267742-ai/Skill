@@ -27,10 +27,11 @@ Use only the required specialist stages and pass their artifacts forward:
 
 1. Product flow and design system: `$mobile-ui-ux-designer`.
 2. Architecture and Kotlin/Compose implementation: `$android-app-developer`; use `$architecture-designer` or `$kotlin-specialist` when their specialized guidance is useful and available.
-3. Functional and technical verification: `$android-qa-engineer`.
-4. Store-policy and declaration review: `$google-play-policy-reviewer`.
-5. Competitor research, metadata, localization, and creatives: `$google-play-aso-expert`.
-6. GitHub, signing, bundle verification, Octo Browser, and Play rollout: `$android-release-manager`; use `$playwright` with the Octo API/CDP connection when browser automation is available.
+3. Adaptive Compose or Views layout implementation and rendered visual verification: `$android-ui-layout-engineer`.
+4. Functional and technical verification: `$android-qa-engineer`.
+5. Store-policy and declaration review: `$google-play-policy-reviewer`.
+6. Competitor research, metadata, localization, and creatives: `$google-play-aso-expert`.
+7. GitHub, signing, bundle verification, Octo Browser, and Play rollout: `$android-release-manager`; use `$playwright` with the Octo API/CDP connection when browser automation is available.
 
 Do not hard-depend on absent skill names such as `answers-charts`, `control-browser`, or `writing-blocks`. Use the available spreadsheet, visualization, browser, and artifact capabilities that satisfy the same need.
 
@@ -40,6 +41,7 @@ For greenfield apps, default to native Kotlin and Jetpack Compose. For existing 
 
 - Product gate: the audience, core job, differentiation, scope, monetization, markets, and success criteria are explicit.
 - UX gate: the primary journey, system states, accessibility, form-factor behavior, and real content are specified.
+- Layout gate: required screens and states are rendered against the approved reference across relevant widths, form factors, font scales, themes, and locales, with unexplained visual drift resolved.
 - Build gate: requested variants compile and relevant tests, lint, and static checks pass.
 - QA gate: critical journeys, lifecycle behavior, failure states, and supported device classes have reproducible evidence.
 - Policy gate: runtime behavior, SDKs, permissions, data declarations, privacy policy, account deletion, monetization, audience, and listing claims reconcile.

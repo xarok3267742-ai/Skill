@@ -12,6 +12,7 @@ EXPECTED_SKILLS = {
     "android-product-pipeline",
     "android-app-developer",
     "mobile-ui-ux-designer",
+    "android-ui-layout-engineer",
     "android-qa-engineer",
     "google-play-policy-reviewer",
     "google-play-aso-expert",

@@ -33,4 +33,6 @@ Read [references/verification.md](references/verification.md) before choosing bu
 
 ## Handoff
 
+Hand approved screen states, component APIs, and working builds to `$android-ui-layout-engineer` for precise adaptive layout work and rendered comparison. Retain ownership of state, navigation, data, and application behavior; incorporate verified layout fixes without moving business logic into UI components.
+
 Report changed behavior, affected modules, architecture decisions, checks and results, generated artifacts, and any unverified device-, locale-, service-, or account-dependent behavior. Never claim a build, device test, or visual check that was not performed.

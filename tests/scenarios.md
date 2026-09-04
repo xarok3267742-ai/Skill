@@ -6,19 +6,19 @@ Use these prompts in an isolated temporary workspace. Do not create remote repos
 
 Prompt: “Use `$android-product-pipeline` to create a new Android habit tracker. I have only the idea.”
 
-Expected: inspect the empty workspace; ask adaptive product questions in batches of at most three; ask for complexity 0-10 and language/default/fallback/listing locales; research 5-8 current competitors; propose native Kotlin/Compose; show an execution brief and continue automatically without asking for confirmation when the original request includes end-to-end build/release intent.
+Expected: inspect the empty workspace; ask adaptive product questions in batches of at most three; ask for complexity 0-10 and language/default/fallback/listing locales; research 5-8 current competitors; propose native Kotlin/Compose; route approved screens through `$android-ui-layout-engineer`; show an execution brief and continue automatically without asking for confirmation when the original request includes end-to-end build/release intent.
 
 ## 2. Android TV media app
 
 Prompt: “Create a TV-only streaming client at complexity 7 with English and Arabic.”
 
-Expected: include D-pad-only journeys, initial focus and restoration, Back, distance-readable UI, TV launcher assets, media controls, RTL/mixed-direction coverage, current TV requirements, release-like testing, and TV listing evidence.
+Expected: include D-pad-only journeys, initial focus and restoration, Back, distance-readable UI, TV launcher assets, media controls, RTL/mixed-direction coverage, current TV requirements, rendered layout verification through `$android-ui-layout-engineer`, release-like testing, and TV listing evidence.
 
 ## 3. Wear OS companion
 
 Prompt: “Add a Wear OS companion to an existing phone fitness app.”
 
-Expected: inspect and preserve the existing stack; establish standalone/companion behavior, package/signing/listing relationships, round/square UI, rotary input, tiles/complications, disconnected sync, current Wear requirements, and device-specific QA.
+Expected: inspect and preserve the existing stack; establish standalone/companion behavior, package/signing/listing relationships, round/square UI, rotary input, tiles/complications, disconnected sync, current Wear requirements, rendered layout verification through `$android-ui-layout-engineer`, and device-specific QA.
 
 ## 4. Existing non-native project
 
@@ -67,3 +67,9 @@ Expected: never repeat or commit the token; store it in the system secret store 
 Prompt state: a prior turn built an AAB or clicked upload, then stopped; the requested outcome is `play-available` and the checkpoint is absent, stale, or says complete.
 
 Expected: reconstruct or read the checkpoint, inspect GitHub workflow/artifact provenance, open the intended Play developer account, verify the exact package/version in App bundle explorer and target track, and compare the visible status with `play-available`. Continue from the earliest unmet gate. Do not trust the prior assistant message, local AAB, upload click, or stale checkpoint as proof. If review is pending, keep the goal incomplete and use quiet recurring monitoring when available.
+
+## 12. Android layout correction
+
+Prompt: “Use `$android-ui-layout-engineer` to fix drifting icon/text alignment on this Compose screen without changing its behavior.”
+
+Expected: identify the authoritative reference and capture configuration; inspect the parent constraints, modifier order, typography, icon bounds, tokens, insets, and semantics; preserve architecture and behavior; replace structural magic offsets with reusable layout rules; render the affected states at the reference and narrow widths, default/enlarged font scales, supported themes, and relevant LTR/RTL locales; report comparison evidence and intentional deviations without claiming pixel accuracy from code inspection alone.
