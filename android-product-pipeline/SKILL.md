@@ -13,7 +13,7 @@ Inspect the repository, build configuration, existing product documents, Git rem
 
 Read [references/intake-and-authorization.md](references/intake-and-authorization.md) for the adaptive questionnaire and the single release-authorization gate. Read [references/project-contract.md](references/project-contract.md) before creating or adopting a project workspace.
 
-Do not begin remote mutations until the user confirms one concise authorization summary containing the exact GitHub destination, application/package ID, version, Play developer account, Octo profile, track, countries, rollout, and any first-time signing setup. That confirmation authorizes only the listed push, CI, release, and Play Console operations for that version. After confirmation, continue without redundant pauses unless a human-only or evidence blocker is reached.
+Do not begin remote mutations until the user confirms one concise authorization summary containing the exact GitHub destinations, application/package ID, version, public privacy-policy host and URL, Play developer account, Octo profile, track, countries, rollout, and any first-time signing setup. That confirmation authorizes only the listed source/policy publication, push, CI, release, and Play Console operations for that version. After confirmation, continue without redundant pauses unless a human-only or evidence blocker is reached.
 
 ## Research before implementation
 
@@ -50,7 +50,7 @@ Do not conceal skipped or blocked checks. A failed gate returns work to the owni
 
 ## Release and completion
 
-Read [references/github-release.md](references/github-release.md) for the private-repository, PR, CI, upload-key, and SSH-signed-tag workflow. Read [references/octo-play-console.md](references/octo-play-console.md) only when operating Play Console through Octo Browser.
+Read [references/privacy-policy-publishing.md](references/privacy-policy-publishing.md) before preparing or publishing a privacy policy. The policy must be publicly reachable over stable HTTPS without login, session, account, or device dependence before its URL is entered in Play Console. Read [references/github-release.md](references/github-release.md) for the private-repository, PR, CI, upload-key, and SSH-signed-tag workflow. Read [references/octo-play-console.md](references/octo-play-console.md) only when operating Play Console through Octo Browser.
 
 Publication must be idempotent. Before every retry, inspect GitHub and Play Console for the expected commit, tag, workflow, version code, artifact, release, and current status. Never repeat an ambiguous create, upload, submit, or rollout action until the resulting state is known.
 

@@ -12,6 +12,7 @@ Use a user-selected project root. If none is provided for a greenfield app, prop
 |   |   |-- research/
 |   |   `-- releases/
 |   |-- play/
+|   |   `-- privacy-policy/ Canonical policy source by locale
 |   `-- .github/workflows/
 |-- private/              mode 0700; never committed
 `-- artifacts/            downloaded release outputs and evidence
@@ -47,17 +48,29 @@ play:
   track: "internal"
   countries: ["US"]
   managed_publishing: false
+privacy_policy:
+  hosting: "github-pages"
+  deployment_repository: "owner/android-app-policies"
+  source_path: "play/privacy-policy"
+  deployment_path: "apps/com.example.app"
+  public_url: "https://owner.github.io/android-app-policies/apps/com.example.app/"
+  custom_domain: null
+  locales: ["en-US"]
+  fallback_locale: "en-US"
+credentials:
+  octo_api_keychain_service: "codex.android-product-pipeline.octo-api"
+  octo_api_keychain_account: "default"
 release:
   version_name: "1.0.0"
   version_code: 1
   rollout_percent: 100
 ```
 
-This file is configuration, not authorization. Validate complexity as an integer from 0 through 10, package-name syntax, allowed form-factor and track values, positive monotonic version codes, locale/country formats, and rollout range before using it.
+This file is configuration, not authorization. Validate complexity as an integer from 0 through 10, package-name syntax, allowed form-factor and track values, positive monotonic version codes, locale/country formats, rollout range, HTTPS policy URL, policy locale fallback, and deployment path before using it. `credentials` contains locators only, never credential values.
 
 ## Secret boundary
 
-Keep upload keystores and private credentials in `private/` with restrictive permissions. Store passwords and API tokens in macOS Keychain or the active platform secret store. Put CI copies only in GitHub encrypted secrets, transmit them through stdin or protected environment variables, and never print them.
+Keep upload keystores and private credentials in `private/` with restrictive permissions. Store passwords and API tokens in macOS Keychain or the active platform secret store. For Octo Browser on macOS, use the configured Keychain service/account locator and retrieve the value at runtime without writing it to disk or stdout. Put CI copies only in GitHub encrypted secrets, transmit them through stdin or protected environment variables, and never print them.
 
 The repository may contain the public upload certificate and its SHA-256 fingerprint. It must ignore `private/`, artifacts, keystores, signing properties, `.env*`, tokens, cookies, browser profiles, and generated release outputs. Before every push and package, inspect tracked files and history for secret-like paths and values.
 

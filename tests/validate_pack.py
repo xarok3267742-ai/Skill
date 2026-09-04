@@ -25,7 +25,7 @@ FORBIDDEN_FILE_NAMES = {
     "service-account.json",
 }
 
-FORBIDDEN_SUFFIXES = {".jks", ".keystore", ".p12", ".pfx"}
+FORBIDDEN_SUFFIXES = {".jks", ".keystore", ".p12", ".pfx", ".key", ".pem"}
 
 SECRET_PATTERNS = {
     "private key": re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----"),

@@ -1,6 +1,6 @@
 # Google Play publishing through Octo Browser
 
-Use the configured Octo Browser profile rather than a generic browser session. Obtain the Octo API token from the system secret store without displaying it. Resolve the exact profile ID or unique name, start it through the supported Octo API, and attach Playwright through CDP. Do not modify, export, transfer, or delete profiles.
+Use the configured Octo Browser profile rather than a generic browser session. Obtain the Octo API token from the system secret store without displaying it. On macOS, resolve the configured Keychain service/account entry at runtime; never place its value in project YAML, repository files, shell arguments, screenshots, browser code, or logs. Resolve the exact profile ID or unique name, start it through the supported Octo API, and attach Playwright through CDP. Do not modify, export, transfer, or delete profiles.
 
 Check the current Octo automation documentation before connecting: https://docs.octobrowser.net/en/api/start-api/
 
@@ -12,7 +12,7 @@ Before mutation, verify the visible Google account, Play developer account, app/
 
 Inspect the target track and App bundle explorer for the version code. Upload only the AAB downloaded from the verified GitHub run after local checksum and certificate verification. If the version already exists, reconcile it rather than uploading again.
 
-Complete app content, reviewer access, Data safety, privacy-policy, audience/content-rating, ads, billing, pricing/distribution, listing, localization, and form-factor declarations only from confirmed facts and observed behavior. Never choose an answer for convenience.
+Before entering the privacy-policy field, verify that the approved canonical URL resolves over HTTPS without authentication, cookies, device binding, or expiring parameters and that its content names the exact app/package and responsible developer/legal entity. Complete app content, reviewer access, Data safety, privacy-policy, audience/content-rating, ads, billing, pricing/distribution, listing, localization, and form-factor declarations only from confirmed facts and observed behavior. Never choose an answer for convenience.
 
 After each create, upload, save, submit, or rollout action, inspect the visible result and record its status. On ambiguous feedback, reload or visit the canonical publication/status view before retrying.
 

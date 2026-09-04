@@ -14,4 +14,6 @@ At minimum, determine whether current rules affect:
 
 Inspect implementation and, when authorized, runtime network behavior. A declaration can be complete only when each material data flow is evidenced. If a console question is ambiguous or the evidence is missing, preserve the draft and ask for the needed fact; do not select the most permissive answer.
 
+Fetch the configured privacy-policy URL without stored cookies or authentication. Record the final HTTPS URL, response status, redirect chain, access date, content hash, effective date, displayed developer/legal entity, app/package identity, locale/fallback behavior, and whether the same content is usable on phone and desktop. Treat device-gated, login-gated, expiring, private-drive, or unpublished local pages as missing. Reconcile the policy with the tested SDK/data inventory, Data safety form, deletion behavior, audience, and every material locale.
+
 For every policy-dependent release decision, retain enough source context to reproduce the interpretation without copying long passages. Policy review remains risk assessment, not legal advice or approval assurance.

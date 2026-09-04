@@ -9,7 +9,7 @@ Turn a tested commit into a traceable, idempotent release. Preserve the user's s
 
 ## Preflight
 
-Confirm the merged commit candidate, application ID, variant, version code/name, form factors, languages, release notes, markets, Play developer account/app, Octo profile, track, rollout, managed-publishing choice, QA/policy disposition, and containment plan. Verify current official Google Play requirements, account eligibility, target SDK rules, and form-factor requirements.
+Confirm the merged commit candidate, application ID, variant, version code/name, form factors, languages, release notes, markets, public privacy-policy deployment and URL, Play developer account/app, Octo profile, track, rollout, managed-publishing choice, QA/policy disposition, and containment plan. Verify current official Google Play requirements, account eligibility, target SDK rules, and form-factor requirements.
 
 Read [references/github-actions.md](references/github-actions.md) before creating a repository, configuring secrets, merging a PR, or building a release. Read [references/octo-publishing.md](references/octo-publishing.md) before operating Play Console. Read [references/rollout.md](references/rollout.md) before choosing rollout and monitoring thresholds.
 
@@ -24,6 +24,8 @@ Read [references/github-actions.md](references/github-actions.md) before creatin
 
 ## Publish idempotently
 
+Before opening Play Console, deploy or reconcile the authorized privacy-policy revision and verify its canonical HTTPS URL in a fresh unauthenticated session. Record the policy source commit, deployment commit/run, content hash, effective date, locales, and final URL. If a custom domain is configured, verify domain ownership and HTTPS; otherwise report the GitHub-owner dependency explicitly. Do not publish a generic policy that conflicts with the exact app/package or observed data behavior.
+
 Use the exact artifact downloaded from the successful GitHub run. Before upload or retry, inspect Play for the version code and current release status. Verify the visible Google account, developer account, app, package, track, countries, and rollout before mutation.
 
 After each upload, save, submit, or rollout action, re-read the resulting state. On timeout or ambiguous feedback, inspect the canonical status page before retrying. Never duplicate a version, release, tag, PR, workflow dispatch, or rollout.
@@ -32,4 +34,4 @@ Stop with the draft preserved for CAPTCHA, 2FA, reauthentication, changed terms,
 
 ## Handoff
 
-Produce a release record with commit, verified SSH-signed tag, workflow URL/run ID, artifact path and SHA-256, package/version, upload-certificate fingerprint, checks and results, approved exceptions, release notes, Play account/track/countries/rollout, monitoring/containment plan, and observed Console status. `In review` is not publicly available.
+Produce a release record with commit, verified SSH-signed tag, workflow URL/run ID, artifact path and SHA-256, package/version, upload-certificate fingerprint, policy URL/source/deployment/content hash, checks and results, approved exceptions, release notes, Play account/track/countries/rollout, monitoring/containment plan, and observed Console status. `In review` is not publicly available.

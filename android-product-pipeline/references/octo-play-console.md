@@ -6,7 +6,7 @@ Check the current Octo automation documentation before connecting: https://docs.
 
 ## Connect to the intended profile
 
-Retrieve the Octo API token from the system secret store without printing it. Resolve the configured profile ID or unique profile name, launch that exact profile through the supported Octo API, and attach Playwright through its CDP endpoint. Do not create, edit, export, transfer, or delete profiles unless separately requested.
+Retrieve the Octo API token from the system secret store without printing it. On macOS, resolve it using `credentials.octo_api_keychain_service` and `credentials.octo_api_keychain_account`; configuration contains only those locators. A token supplied interactively may be written directly into the secret store once, but never replay it from the transcript or read it from a repository file, project YAML, command-line argument, browser script, or log. Resolve the configured profile ID or unique profile name, launch that exact profile through the supported Octo API, and attach Playwright through its CDP endpoint. Do not create, edit, export, transfer, or delete profiles unless separately requested.
 
 Use accessibility roles, labels, visible text, and current DOM state instead of fixed coordinates. Console structure changes frequently; inspect each page before acting. Keep screenshots or state notes around important transitions, redacting account and personal information.
 
@@ -18,6 +18,7 @@ Before changing Play Console, verify all of the following from visible state:
 - expected app and package ID, or the confirmed new-app creation target;
 - expected version code/name, track, countries, rollout, and managed-publishing mode;
 - completed app-content, policy, listing, access, pricing, and distribution prerequisites.
+- the canonical privacy-policy URL returns the approved policy over HTTPS in a fresh unauthenticated session and identifies this exact app/package.
 
 A mismatch is a blocker. Do not switch accounts, apps, packages, tracks, or countries by guessing.
 
