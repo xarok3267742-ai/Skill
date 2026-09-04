@@ -50,7 +50,7 @@ Do not conceal skipped or blocked checks. A failed gate returns work to the owni
 
 ## Release and completion
 
-Read [references/privacy-policy-publishing.md](references/privacy-policy-publishing.md) before preparing or publishing a privacy policy. The policy must be publicly reachable over stable HTTPS without login, session, account, or device dependence before its URL is entered in Play Console. Read [references/github-release.md](references/github-release.md) for the private-repository, PR, CI, upload-key, and SSH-signed-tag workflow. Read [references/octo-play-console.md](references/octo-play-console.md) only when operating Play Console through Octo Browser.
+Read [references/privacy-policy-publishing.md](references/privacy-policy-publishing.md) before preparing or publishing a privacy policy. When configured, use the App Privacy Policy Generator as a drafting aid and publish through Google Sites in the selected Octo profile. The public policy must not name the drafting tool and must be reachable over stable HTTPS without login, session, or device dependence before its URL is entered in Play Console. Read [references/github-release.md](references/github-release.md) for the private-repository, PR, CI, upload-key, and SSH-signed-tag workflow. Read [references/octo-play-console.md](references/octo-play-console.md) only when operating Google Sites or Play Console through Octo Browser.
 
 Publication must be idempotent. Before every retry, inspect GitHub and Play Console for the expected commit, tag, workflow, version code, artifact, release, and current status. Never repeat an ambiguous create, upload, submit, or rollout action until the resulting state is known.
 

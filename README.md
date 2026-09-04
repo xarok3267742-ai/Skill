@@ -18,7 +18,7 @@ Invoke the full workflow explicitly with `$android-product-pipeline`. The intake
 
 The pack contains no credentials. Application source stays in a private GitHub repository by default. Upload keystores and local private files stay outside Git in a mode-`0700` directory; passwords, signing credentials, and the Octo API token belong in macOS Keychain or the active platform secret store. Only public certificates and non-secret Keychain entry locators may be committed.
 
-Privacy policies are published as public, app-specific HTTPS pages that require no login or device-bound session. A user-controlled custom domain is preferred for URL portability; a dedicated public GitHub Pages repository is the fallback. Policies must transparently identify the responsible developer or legal entity and must not be used to conceal ownership or evade platform enforcement.
+Privacy-policy drafts can be prepared through the configured App Privacy Policy Generator, then reviewed against the app and stored with its source. The public policy does not name the drafting tool. Publication uses Google Sites in the selected Octo profile by default and must produce a public, app-specific HTTPS page requiring no login or device-bound session. A user-controlled custom domain is preferred for URL portability; GitHub Pages or another static host is a fallback. Policies must transparently identify the confirmed responsible developer or legal entity and must not be used to conceal ownership or evade platform enforcement.
 
 ## Validate
 

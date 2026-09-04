@@ -49,12 +49,15 @@ play:
   countries: ["US"]
   managed_publishing: false
 privacy_policy:
-  hosting: "github-pages"
-  deployment_repository: "owner/android-app-policies"
+  draft_generator_url: "https://app-privacy-policy-generator.firebaseapp.com/"
+  hosting: "google-sites"
   source_path: "play/privacy-policy"
-  deployment_path: "apps/com.example.app"
-  public_url: "https://owner.github.io/android-app-policies/apps/com.example.app/"
+  google_sites_site_name: "Android App Policies"
+  page_slug: "com-example-app"
+  public_url: "https://sites.google.com/view/android-app-policies/com-example-app"
   custom_domain: null
+  public_developer_name: "Example Developer"
+  public_contact_email: "privacy@example.com"
   locales: ["en-US"]
   fallback_locale: "en-US"
 credentials:
@@ -66,7 +69,7 @@ release:
   rollout_percent: 100
 ```
 
-This file is configuration, not authorization. Validate complexity as an integer from 0 through 10, package-name syntax, allowed form-factor and track values, positive monotonic version codes, locale/country formats, rollout range, HTTPS policy URL, policy locale fallback, and deployment path before using it. `credentials` contains locators only, never credential values.
+This file is configuration, not authorization. Validate complexity as an integer from 0 through 10, package-name syntax, allowed form-factor and track values, positive monotonic version codes, locale/country formats, rollout range, HTTPS policy URL, policy locale fallback, Google Sites destination, and page slug before using it. Store `public_developer_name` and `public_contact_email` only after the user confirms that the discovered values may be published. `credentials` contains locators only, never credential values.
 
 ## Secret boundary
 

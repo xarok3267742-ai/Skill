@@ -24,7 +24,7 @@ Read [references/github-actions.md](references/github-actions.md) before creatin
 
 ## Publish idempotently
 
-Before opening Play Console, deploy or reconcile the authorized privacy-policy revision and verify its canonical HTTPS URL in a fresh unauthenticated session. Record the policy source commit, deployment commit/run, content hash, effective date, locales, and final URL. If a custom domain is configured, verify domain ownership and HTTPS; otherwise report the GitHub-owner dependency explicitly. Do not publish a generic policy that conflicts with the exact app/package or observed data behavior.
+Before opening Play Console, generate or reconcile the authorized privacy-policy draft, publish it through the confirmed Google Site in the selected Octo profile, and verify its canonical HTTPS URL in a fresh unauthenticated session. Record the policy source commit, generator access date in the private release record, Google Sites destination/publication time, content hash, effective date, locales, and final URL. Do not name the generator in the public policy. If a custom domain is configured, verify domain ownership and HTTPS; otherwise report the Google-account and Google Sites URL dependency explicitly. Do not publish a generic policy that conflicts with the exact app/package or observed data behavior.
 
 Use the exact artifact downloaded from the successful GitHub run. Before upload or retry, inspect Play for the version code and current release status. Verify the visible Google account, developer account, app, package, track, countries, and rollout before mutation.
 
@@ -34,4 +34,4 @@ Stop with the draft preserved for CAPTCHA, 2FA, reauthentication, changed terms,
 
 ## Handoff
 
-Produce a release record with commit, verified SSH-signed tag, workflow URL/run ID, artifact path and SHA-256, package/version, upload-certificate fingerprint, policy URL/source/deployment/content hash, checks and results, approved exceptions, release notes, Play account/track/countries/rollout, monitoring/containment plan, and observed Console status. `In review` is not publicly available.
+Produce a release record with commit, verified SSH-signed tag, workflow URL/run ID, artifact path and SHA-256, package/version, upload-certificate fingerprint, policy URL/source/Google Sites publication/content hash, checks and results, approved exceptions, release notes, Play account/track/countries/rollout, monitoring/containment plan, and observed Console status. `In review` is not publicly available.

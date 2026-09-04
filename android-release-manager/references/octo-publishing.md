@@ -6,6 +6,14 @@ Check the current Octo automation documentation before connecting: https://docs.
 
 Prefer current accessible labels, roles, visible text, and DOM state over coordinates or stale selectors. Inspect the page before every transition and retain redacted evidence around important mutations.
 
+## Generate and publish the policy
+
+Near the beginning of intake, use the selected profile read-only to discover the visible Google account email, Play developer display name, and Google Sites availability. Treat those values as candidates until the user confirms which name and contact may be published. Do not infer legal identity from the account alone.
+
+After version-specific authorization, open `https://app-privacy-policy-generator.firebaseapp.com/` in that profile, populate only confirmed public identity and evidence-backed app/data fields, and export a draft. Never put credentials, unpublished personal data, or guessed declarations into the generator. Review and normalize the result in the app repository; the public policy must not mention the generator. If removing supplied attribution would conflict with current terms or licensing, create independent policy text from confirmed facts instead.
+
+Open Google Sites in the same authorized profile. Reconcile an existing site/page for the package before creating a new one, preview changes, publish the approved locale pages, and set the published site to public viewing. Use a custom domain when confirmed; otherwise retain the exact `sites.google.com` URL and state its account dependency in the release record. Re-open the public URL in a fresh unauthenticated context and compare its content hash before entering it in Play Console. On CAPTCHA, 2FA, identity mismatch, unavailable Sites permissions, unexpected sharing restrictions, or uncertain publication state, preserve the draft and stop.
+
 ## Identity and artifact checks
 
 Before mutation, verify the visible Google account, Play developer account, app/package ID, version, target track, countries, rollout, and managed-publishing setting. For a new app, verify the confirmed name, default language, app/game choice, pricing model, and required declarations before creation.

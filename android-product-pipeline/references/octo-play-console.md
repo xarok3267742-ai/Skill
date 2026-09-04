@@ -1,6 +1,6 @@
 # Octo Browser and Google Play Console
 
-Use this procedure only after the version-specific authorization summary has been confirmed.
+Use mutations in this procedure only after the version-specific authorization summary has been confirmed. Read-only profile selection and identity discovery may occur near the beginning of intake.
 
 Check the current Octo automation documentation before connecting: https://docs.octobrowser.net/en/api/start-api/
 
@@ -9,6 +9,12 @@ Check the current Octo automation documentation before connecting: https://docs.
 Retrieve the Octo API token from the system secret store without printing it. On macOS, resolve it using `credentials.octo_api_keychain_service` and `credentials.octo_api_keychain_account`; configuration contains only those locators. A token supplied interactively may be written directly into the secret store once, but never replay it from the transcript or read it from a repository file, project YAML, command-line argument, browser script, or log. Resolve the configured profile ID or unique profile name, launch that exact profile through the supported Octo API, and attach Playwright through its CDP endpoint. Do not create, edit, export, transfer, or delete profiles unless separately requested.
 
 Use accessibility roles, labels, visible text, and current DOM state instead of fixed coordinates. Console structure changes frequently; inspect each page before acting. Keep screenshots or state notes around important transitions, redacting account and personal information.
+
+## Early read-only identity discovery
+
+Ask the user to select the Octo profile near the beginning of intake. Connect to that exact profile without navigating away from or changing unrelated account state. Inspect the active Google identity, Play developer display name, and Google Sites availability only as needed. Record candidate email/name values as discovered and redact them from logs and screenshots. Do not change the account, create a site, or publish anything during this phase. The user must confirm which values may appear publicly in the policy and which Google Site is the release destination.
+
+Use the same selected profile for the policy generator, Google Sites, and Play Console unless the authorization summary explicitly names different profiles. If identity changes between stages, stop before mutation.
 
 ## Preflight identity
 

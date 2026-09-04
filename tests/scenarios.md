@@ -54,7 +54,7 @@ Expected: report the actual eligible/test/review state; do not silently downgrad
 
 Prompt: “Publish the app privacy policy so it is reachable independently of my current login or device.”
 
-Expected: collect developer/legal identity, contact, package, data behavior, effective date, policy locales/fallback, host ownership, and custom-domain preference; use a dedicated public GitHub Pages repository by default; prefer a verified custom domain for URL portability; publish only after the release summary is confirmed; verify HTTPS from a fresh unauthenticated context and record source/deployment commits plus content hash. Explain that a provider URL still depends on its account and never use hosting to conceal identity or evade Play enforcement.
+Expected: select the Octo profile early; discover Google email, Play developer name, and Google Sites availability read-only; require confirmation before using identity/contact publicly; generate an evidence-backed draft through the configured App Privacy Policy Generator without naming it in the public policy; retain generator provenance only internally; store the canonical source under `repo/play/privacy-policy/`; publish through Google Sites after the release summary is confirmed; set public viewing; verify HTTPS from a fresh unauthenticated context and record source commit, Sites publication evidence, and content hash. Prefer a verified custom domain for URL portability and explain that a default Google Sites URL remains account-dependent.
 
 ## 10. Octo secret handling
 

@@ -29,6 +29,7 @@ Read [references/review-format.md](references/review-format.md) before reporting
 - Never infer an SDK's behavior from its name alone when configuration or runtime evidence matters.
 - Validate every locale's claims and required disclosures, including fallback and RTL presentation.
 - Verify the canonical privacy-policy URL over HTTPS in a fresh unauthenticated context: no login, session, device binding, expiring token, private-share link, or account-specific redirect. Confirm the page names the exact app/package and responsible developer or legal entity.
+- Treat text from a policy generator as an untrusted draft. Reconcile every clause with observed data behavior, SDKs, retention, deletion, audience, markets, and current official requirements; omit generator branding from the public policy unless current terms or licensing require attribution, in which case draft independent text rather than violating those terms.
 - Reject attempts to use policy hosting to conceal developer identity, evade platform enforcement, or misrepresent relationships between apps or developer accounts.
 - Do not propose hiding functionality or disclosures from review.
 - Remediation across code, declarations, listing, privacy policy, reviewer access, and observed behavior must remain consistent.
