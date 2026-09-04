@@ -48,7 +48,7 @@ Resolve or discover:
 - version name/code, release notes, countries, track, rollout percentage, and managed-publishing choice;
 - local project root, backup location, upload-key status, Git signing-key status, and required CI environments.
 
-Use a private GitHub repository by default for a new project. Preserve a user-stated production target; do not silently downgrade it. If eligibility prevents production, complete every valid prerequisite and preserve the release in the furthest eligible state while recording the blocker.
+Use a private GitHub repository by default for a new project. For an authorized full publication request with no explicit track, default to `production` with 100% rollout and do not create voluntary internal, closed, or open test releases. This skips Play testing tracks, not CI, lint, QA, policy, signing, or artifact verification. Preserve a user-stated production target; do not silently downgrade it. If Play requires account-specific closed testing or another eligibility prerequisite, do not bypass, fabricate testers, or claim production. When the user has prohibited testing tracks, do not create even a mandatory closed-test release without a new instruction; retain the production-ready artifacts and any permitted production draft, record the exact blocker/prerequisite, and stop.
 
 ## Decision record
 

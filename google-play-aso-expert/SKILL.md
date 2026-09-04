@@ -11,6 +11,8 @@ Improve qualified discovery and install conversion without misrepresenting the p
 
 For new products or positioning changes, read [references/competitor-research.md](references/competitor-research.md) and compare 5-8 relevant Google Play apps in each material market cluster. Separate product facts, store observations, review-language themes, search evidence, and hypotheses. Do not invent keyword volume, ranking difficulty, installs, revenue, or competitor behavior.
 
+Creating or materially revising a screenshot set always requires a current market- and locale-relevant screenshot audit of 5-8 competitors, even when the product positioning is unchanged. Reuse an earlier audit only when its access dates, listings, device category, locale, and observed creative patterns are still current at execution time.
+
 Build intent clusters around the problem, use case, feature, audience, form factor, language, and brand. Select terms for relevance first. Do not use keywords, competitor trademarks, or claims the app cannot satisfy.
 
 ## Produce the listing
@@ -24,6 +26,8 @@ Build intent clusters around the problem, use case, feature, audience, form fact
 - Avoid keyword blocks, unverifiable superlatives, misleading ratings, competitor marks, and prohibited calls to action.
 
 Read [references/deliverables.md](references/deliverables.md) for the output and experiment structure.
+
+For Google Play screenshots, read [references/store-screenshots.md](references/store-screenshots.md) and run the full specialist production chain. Aim for best-in-category visual quality and conversion clarity, but use only truthful captures from the exact tested release candidate. Do not accept raw emulator screenshots as final merely because their dimensions pass validation.
 
 ## Evaluate
 

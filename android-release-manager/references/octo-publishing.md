@@ -1,6 +1,8 @@
-# Google Play publishing through Octo Browser
+# Google Play bootstrap and verification through Octo Browser
 
 Use the configured Octo Browser profile rather than a generic browser session. Obtain the Octo API token from the system secret store without displaying it. On macOS, resolve the configured Keychain service/account entry at runtime; never place its value in project YAML, repository files, shell arguments, screenshots, browser code, or logs. Resolve the exact profile ID or unique name, start it through the supported Octo API, and attach Playwright through CDP. Do not modify, export, transfer, or delete profiles.
+
+Use Octo for the one-time app/first-build initialization required before Fastlane `supply`, Play declarations and workflows not supported by the Developer API, Google Sites, and final visual/state verification. After bootstrap, prefer the pinned Fastlane lane for repeatable AAB, metadata, screenshot, and track delivery. Never upload the same app/version through Fastlane and the browser concurrently.
 
 Check the current Octo automation documentation before connecting: https://docs.octobrowser.net/en/api/start-api/
 

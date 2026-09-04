@@ -32,8 +32,8 @@ Use only the required specialist stages and pass their artifacts forward:
 3. Adaptive Compose or Views layout implementation and rendered visual verification: `$android-ui-layout-engineer`.
 4. Functional and technical verification: `$android-qa-engineer`.
 5. Store-policy and declaration review: `$google-play-policy-reviewer`.
-6. Competitor research, metadata, localization, and creatives: `$google-play-aso-expert`.
-7. GitHub, signing, bundle verification, Octo Browser, and Play rollout: `$android-release-manager`; use `$playwright` with the Octo API/CDP connection when browser automation is available.
+6. Competitor research, metadata, localization, creatives, and production-grade store screenshots: `$google-play-aso-expert`, coordinating `$mobile-ui-ux-designer`, `$android-ui-layout-engineer`, `$android-qa-engineer`, and `$imagegen` under the screenshot contract.
+7. GitHub, signing, bundle verification, pinned Fastlane delivery, Octo Browser bootstrap/verification, and Play rollout: `$android-release-manager`; use `$playwright` with the Octo API/CDP connection when browser automation is available.
 
 Do not hard-depend on absent skill names such as `answers-charts`, `control-browser`, or `writing-blocks`. Use the available spreadsheet, visualization, browser, and artifact capabilities that satisfy the same need.
 
@@ -47,7 +47,7 @@ For greenfield apps, default to native Kotlin and Jetpack Compose. For existing 
 - Build gate: requested variants compile and relevant tests, lint, and static checks pass.
 - QA gate: critical journeys, lifecycle behavior, failure states, and supported device classes have reproducible evidence.
 - Policy gate: runtime behavior, SDKs, permissions, data declarations, privacy policy, account deletion, monetization, audience, and listing claims reconcile.
-- ASO gate: metadata and creatives fit current locale/form-factor limits and accurately represent the tested product.
+- ASO gate: metadata and creatives fit current locale/form-factor limits; screenshots form a polished, localized value story, retain capture/generated-asset provenance, pass truth and visual QA against the exact release candidate, and display correctly in the Play listing preview.
 - Release gate: merged commit, signed tag, signed AAB, certificate, version, checksum, CI provenance, Play target, and rollback plan agree.
 
 Do not conceal skipped or blocked checks. A failed gate returns work to the owning stage.

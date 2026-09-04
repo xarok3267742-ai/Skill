@@ -48,7 +48,9 @@ git:
 play:
   developer_account: "Developer display name"
   octo_profile_id: "profile-id"
-  track: "internal"
+  delivery: "fastlane"
+  fastlane_metadata_path: "fastlane/metadata/android"
+  track: "production"
   countries: ["US"]
   managed_publishing: false
 privacy_policy:
@@ -66,6 +68,10 @@ privacy_policy:
 credentials:
   octo_api_keychain_service: "codex.android-product-pipeline.octo-api"
   octo_api_keychain_account: "default"
+  play_auth: "workload-identity"
+  play_wif_provider_github_variable: "GOOGLE_WORKLOAD_IDENTITY_PROVIDER"
+  play_service_account_github_variable: "GOOGLE_PLAY_SERVICE_ACCOUNT_EMAIL"
+  play_service_account_json_github_secret_fallback: "GOOGLE_PLAY_SERVICE_ACCOUNT_JSON"
 execution:
   mode: "autonomous-multi-agent"
   parallel_workers: "auto"
@@ -75,9 +81,10 @@ release:
   version_name: "1.0.0"
   version_code: 1
   rollout_percent: 100
+  skip_optional_play_testing_tracks: true
 ```
 
-This file records the execution target but cannot broaden the user's task scope. `parallel_workers: "auto"` means use the available delegation capacity and the multi-agent contract; it is not a fixed promise of concurrency. Validate complexity as an integer from 0 through 10, package-name syntax, allowed form-factor, track and desired-outcome values, positive monotonic version codes, locale/country formats, rollout range, HTTPS policy URL, policy locale fallback, Google Sites destination, and page slug before using it. Store `public_developer_name` and `public_contact_email` only when they are already public for the selected developer or otherwise established by user-stated facts. `credentials` contains locators only, never credential values.
+This file records the execution target but cannot broaden the user's task scope. `parallel_workers: "auto"` means use the available delegation capacity and the multi-agent contract; it is not a fixed promise of concurrency. `skip_optional_play_testing_tracks: true` means release directly to production when the account/app is eligible; it never disables build/QA verification or overrides a mandatory Play testing requirement. Validate complexity as an integer from 0 through 10, package-name syntax, allowed form-factor, track and desired-outcome values, positive monotonic version codes, locale/country formats, rollout range, HTTPS policy URL, policy locale fallback, Google Sites destination, and page slug before using it. Store `public_developer_name` and `public_contact_email` only when they are already public for the selected developer or otherwise established by user-stated facts. `credentials` contains locators only, never credential values.
 
 ## Secret boundary
 

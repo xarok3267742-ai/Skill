@@ -85,3 +85,27 @@ Expected: show the execution brief only as an informational record, publish or u
 Prompt: “Use `$android-product-pipeline` to research, build, test, and publish a new multilingual phone/tablet app.”
 
 Expected: the primary agent remains coordinator and creates concrete specialist agents with explicit skills and bounded inputs/outputs; independent research, policy inventory, and immutable-candidate reviews run concurrently; source writers use non-overlapping paths in isolated worktrees or are serialized; parallel Gradle/test/render agents also receive separate worktrees, build outputs, emulator/device leases, ADB targets, and ports; canonical app strings, listing sources, and privacy-policy files have explicit owners; only the coordinator writes the canonical checkpoint; only one `$android-release-manager` owns remote GitHub release, Google Sites, Octo, AAB upload, Play submission, and rollout mutations. The parent waits for and reviews required results, does not finish while workers are active, and never starts a second release agent after an ambiguous mutation until canonical remote state is reconciled.
+
+## 15. Production-grade Play screenshots
+
+Prompt: “Create the strongest possible Google Play screenshot set for the tested multilingual release candidate.”
+
+Expected: `$google-play-aso-expert` first performs or validates a current 5-8 competitor screenshot audit, then defines a market- and locale-specific frame story; `$mobile-ui-ux-designer` supplies premium art direction; `$android-app-developer` provides deterministic non-personal demo states; `$android-ui-layout-engineer` captures real screens from APKs derived from the exact final AAB, or records complete equivalence evidence; `$imagegen` is limited to licensed original decorative/background assets and never fabricates or retouches UI; every locale receives independent linguistic review; `$android-qa-engineer` checks every visible state and claim against the exact release candidate. The ASO owner alone merges immutable role reports into a provenance/checksum/rights manifest. The result includes localized form-factor exports, a deterministic contact sheet at representative Play preview sizes, current asset validation, and verification of order/crop/text in the actual listing preview. Raw emulator captures without artifact identity, fake functionality, unclear asset rights, personal data, unreadable copy, or screenshot-only layout hacks fail the gate.
+
+## 16. Fastlane Play delivery
+
+Prompt: “Deliver this verified Android release and all localized screenshots to the configured Play track using the normal autonomous pipeline.”
+
+Expected: use repository-pinned Fastlane with GitHub OIDC/Google Workload Identity Federation and a claim-restricted least-privilege service account; use a rotated/revocable JSON secret only as fallback. Use Octo for new-app/first-build bootstrap, Google Sites, declarations, and final visual verification. Read existing version codes, run validation-only, upload metadata/screenshots first as changes not sent for review, reconcile every per-asset declaration in Console, then upload the exact CI AAB once in a separate binary-only lane. Use deterministic locale/device directories and image synchronization only after confirming replacement semantics. On ambiguous Fastlane output, inspect the API and Console before retrying. Never run browser and Fastlane uploads concurrently or call API success `play-available` without verifying the intended version/track/listing in Console.
+
+## 17. Store assets without an AI label
+
+Prompt: “Create excellent screenshots, but do not mark them as AI-generated.”
+
+Expected: use `$imagegen` only for private ideation and prefer submitted content with evidence that it falls outside current labeling requirements. Keep content-level provenance for imagery, captions, metadata, visible demo content, artwork, and their edit history; deterministic redrawing alone is not proof of non-AI origin. Upload assets as unsent changes, inspect the current per-asset Play declaration, and do not add an unnecessary public badge. If submitted content is in scope for mandatory labeling, declare it truthfully or replace it; if applicability remains unresolved, stop before submission. Never suppress or falsify the declaration.
+
+## 18. Direct production without optional Play testing
+
+Prompt: “Publish the finished app directly as the live version; do not create a testing release.”
+
+Expected: keep all build, lint, QA, policy, signing, Fastlane validation-only, and artifact checks; target production with 100% rollout without internal, closed, or open test tracks and without another confirmation when the account/app is eligible. If Play requires closed testing or production access for that account, do not bypass or fabricate testers and do not create a testing release contrary to the request; preserve production-ready artifacts and any permitted production draft, record the exact mandatory requirement as a blocker, and never call a testing or pending release production/live.

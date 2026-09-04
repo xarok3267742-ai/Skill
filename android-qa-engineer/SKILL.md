@@ -35,4 +35,6 @@ Read [references/execution.md](references/execution.md) for evidence and defect 
 
 Consume the rendered layout matrix and comparison evidence from `$android-ui-layout-engineer`, then independently cover the highest-risk visual states during functional execution. Return reproducible layout defects to that stage without treating a passing screenshot diff as proof of correct behavior.
 
+For every final Play screenshot, verify that the visible app state, data, entitlement, locale, form factor, price, result, and marketing claim are reproducible from the recorded release-candidate commit. Reject retouched UI, invented functionality, personal data, unreadable localized text, wrong device categorization, or a frame whose decorative composition changes the product meaning.
+
 Report scope, complexity target, environments, locales, passed/failed journeys, defects by severity, blocked checks, evidence, and release recommendation. The recommendation must reflect tested scope and residual risk; never infer coverage that was not executed.

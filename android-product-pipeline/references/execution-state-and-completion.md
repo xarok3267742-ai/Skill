@@ -21,6 +21,8 @@ Record one terminal outcome before implementation:
 
 If the user says to do everything, publish, or finish the full pipeline without narrowing the goal, use `play-available`. Never reinterpret `in review` as `play-available`.
 
+For that full-publication default, target production with 100% rollout and skip optional Play testing tracks. Continue to run all local/CI build, QA, policy, signing, and release checks. If Play disables production until account-specific testing requirements are met, record the actual requirement and eligible track; do not manufacture participation, bypass eligibility, or relabel a test release as production. If the user explicitly prohibited testing tracks, keep production-ready artifacts and any permitted production draft, but do not create the required closed-test release without a new instruction.
+
 ## Persistent checkpoint
 
 Create `artifacts/pipeline-state.yaml` before the first implementation mutation. It contains no secrets and records at least:

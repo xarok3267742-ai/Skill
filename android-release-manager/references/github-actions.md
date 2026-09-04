@@ -20,12 +20,13 @@ Prefer Play App Signing with a separate upload key. Store the local keystore out
 - `ANDROID_KEYSTORE_PASSWORD`
 - `ANDROID_KEY_ALIAS`
 - `ANDROID_KEY_PASSWORD`
+- `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` — fallback only when Workload Identity Federation is unavailable
 
-Transmit secret values via protected stdin/environment mechanisms. Never pass them on a command line, print them, persist them in caches, or include them in artifacts.
+For Fastlane, prefer GitHub OIDC to a Google Workload Identity Provider restricted to the expected repository, protected ref, and release environment, using a dedicated least-privilege service account and short-lived Application Default Credentials. Grant `id-token: write` only to the release job. If WIF is unavailable, `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` contains the fallback credential and must be restored only to a runner temporary file with documented rotation/revocation ownership. Never pass secret contents on a command line, print them, persist them in caches, or include them in artifacts.
 
 ## Release workflow requirements
 
-The workflow must use least privileges and the repository's pinned tools. It must run tests and lint, restore the upload keystore into a runner temporary directory, build the signed AAB, verify package/version/certificate, compute SHA-256, retain relevant mapping/native-symbol/baseline-profile files, upload bounded-retention artifacts, and delete temporary signing material in an always-run cleanup step.
+The workflow must use least privileges and the repository's pinned tools. It must run tests and lint, restore the upload keystore into a runner temporary directory, build the signed AAB, verify package/version/certificate, compute SHA-256, retain relevant mapping/native-symbol/baseline-profile files, upload bounded-retention artifacts, and delete temporary signing material in an always-run cleanup step. When delivery is enabled, authenticate through restricted OIDC/WIF and invoke the repository-pinned Fastlane through Bundler. If the fallback Play JSON key is used, restore it to a separate temporary file and delete it in the same always-run cleanup path.
 
 Tag or dispatch the workflow exactly once. After it succeeds, download the artifact from that run, recompute SHA-256 locally, and verify the upload certificate against the approved public fingerprint. A locally rebuilt AAB is not interchangeable with the CI artifact unless its provenance is separately approved.
 

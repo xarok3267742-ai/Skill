@@ -44,7 +44,7 @@ Render the affected screen in the configurations relevant to the product, includ
 - D-pad focus and distance-readable rendering for Android TV;
 - round/square screens, rotary input, and edge clipping for Wear OS.
 
-Use screenshot comparison or an overlay when a reference image exists. Inspect the full screen and cropped high-risk regions. Fix the underlying layout rule and re-render; do not stop after code inspection. Use real app renders for Play screenshots and never fabricate implemented functionality.
+Use screenshot comparison or an overlay when a reference image exists. Inspect the full screen and cropped high-risk regions. Fix the underlying layout rule and re-render; do not stop after code inspection. For Play captures, render deterministic states from the exact release candidate at the recorded locale, viewport, density, theme, and system-bar mode. Fix genuine UI defects in the app and recapture; never retouch app pixels, introduce screenshot-only offsets, or fabricate implemented functionality.
 
 ## Handoff
 

@@ -21,9 +21,9 @@ For audits, read [references/audit.md](references/audit.md). For new systems, re
 
 ## Visual tooling and outputs
 
-Choose the smallest useful artifact: journey, wireframe, high-fidelity screen, component inventory, design tokens, prototype, or audit. Use `$visualize` when a flow or hierarchy is materially easier to understand visually. Use `$imagegen` only for original concept imagery, icons, backgrounds, or feature graphics; label generated assets and keep provenance.
+Choose the smallest useful artifact: journey, wireframe, high-fidelity screen, component inventory, design tokens, prototype, or audit. Use `$visualize` when a flow or hierarchy is materially easier to understand visually. Use `$imagegen` only for original concept imagery, icons, backgrounds, or feature graphics; track generated assets and provenance internally. Do not add a public AI badge unless required. When final Play assets must avoid AI labeling, use image generation only for private ideation and recreate the approved direction with deterministic, rights-cleared assets.
 
-Play listing screenshots must be truthful captures from the tested app. Do not use image generation to fabricate implemented functionality. Connect every recommendation to a user or business outcome and clearly label hypotheses.
+For Play listing screenshots, turn the ASO brief into a premium, coherent visual story: strong first-frame value, clear hierarchy, precise alignment, concise localized captions, consistent brand treatment, and form-factor-specific composition. The UI shown must remain a truthful capture from the tested app. Do not use image generation to fabricate implemented functionality or to repaint app pixels. Connect every recommendation to a user or business outcome and clearly label hypotheses.
 
 Avoid invented brand facts, inaccessible contrast, tiny targets, placeholder copy in final designs, unsafe destructive actions, and novelty that obscures primary tasks.
 

@@ -33,6 +33,7 @@ Read [references/review-format.md](references/review-format.md) before reporting
 - Reject attempts to use policy hosting to conceal developer identity, evade platform enforcement, or misrepresent relationships between apps or developer accounts.
 - Do not propose hiding functionality or disclosures from review.
 - Remediation across code, declarations, listing, privacy policy, reviewer access, and observed behavior must remain consistent.
+- Compare every submitted image, video, caption, metadata field, visible demo-content element, and artwork source/edit history with the current per-asset AI self-declaration requirements and applicable law. Pixel provenance alone is insufficient. Do not add an unnecessary public badge, but never conceal generated/edited origin or submit a false declaration when labeling is required; prefer demonstrably out-of-scope final content when the release brief requires no AI label, and block submission when applicability remains unresolved.
 - Never choose a legal or policy declaration merely to unblock release.
 
 Change Play Console or submit forms only when the user explicitly requested an end-to-end release and the exact app/version/account mutation is inside the recorded execution scope. Do not ask for a redundant confirmation, and never infer release authority from a review-only request.
