@@ -5,7 +5,7 @@ description: Prepare, verify, and deliver Android releases through GitHub and Go
 
 # Android Release Manager
 
-Turn a tested commit into a traceable, idempotent release. Preserve the user's selected app, GitHub repository, Play account, Octo profile, countries, track, rollout, and desired terminal outcome. An explicit request to build/release/publish plus recorded intake answers authorizes ordinary in-scope GitHub, CI, policy-site, AAB-upload, submission, and rollout operations. Do not ask for another confirmation. Stop only for a human-only/evidence blocker or when the observed terminal criteria are satisfied.
+Turn a tested commit into a traceable, idempotent release. Preserve the user's selected app, GitHub repository, Play account, Octo profile, countries, track, rollout, and desired terminal outcome. An explicit request to build/release/publish plus recorded intake answers authorizes ordinary in-scope GitHub, CI, policy-site, AAB-upload, submission, and rollout operations. Do not ask for another confirmation, including before publishing Google Sites, uploading the verified AAB, sending changes for review, or starting the configured rollout. Treat the release brief and preflight as internal verification, then act. Stop only for a human-only/evidence blocker or when the observed terminal criteria are satisfied.
 
 ## Preflight
 

@@ -1,6 +1,6 @@
 # Octo Browser and Google Play Console
 
-Use mutations in this procedure when the user's explicit end-to-end build/release request and intake answers place them inside the recorded execution scope. Do not request an additional authorization summary. Read-only profile selection and identity discovery may occur near the beginning of intake.
+Use mutations in this procedure when the user's explicit end-to-end build/release request and intake answers place them inside the recorded execution scope. Do not request an additional authorization summary or ask whether to publish the prepared site, upload the verified bundle, send changes for review, or start the configured rollout. Read-only profile selection and identity discovery may occur near the beginning of intake.
 
 Check the current Octo automation documentation before connecting: https://docs.octobrowser.net/en/api/start-api/
 
@@ -26,7 +26,7 @@ Before changing Play Console, verify all of the following from visible state:
 - completed app-content, policy, listing, access, pricing, and distribution prerequisites.
 - the canonical privacy-policy URL returns the approved policy over HTTPS in a fresh unauthenticated session and identifies this exact app/package.
 
-A mismatch is a blocker. Do not switch accounts, apps, packages, tracks, or countries by guessing.
+A mismatch is a blocker. A successful match is permission to continue within the recorded scope, not a reason to request another confirmation. Do not switch accounts, apps, packages, tracks, or countries by guessing.
 
 ## Idempotent release flow
 

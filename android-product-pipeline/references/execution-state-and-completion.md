@@ -4,7 +4,7 @@ Use this contract for every end-to-end build or release so the workflow survives
 
 ## Scope and initiative
 
-An explicit instruction to use `$android-product-pipeline` to build, release, publish, ship, or finish an app, together with the user's questionnaire answers, authorizes ordinary in-scope operations required for that app/version. Do not request a second approval for the execution brief, branch, PR, CI run, encrypted-secret setup, Google Sites publication, AAB upload, Play submission, or configured rollout.
+An explicit instruction to use `$android-product-pipeline` to build, release, publish, ship, or finish an app, together with the user's questionnaire answers, authorizes ordinary in-scope operations required for that app/version. Do not request a second approval for the execution brief, branch, PR, CI run, encrypted-secret setup, Google Sites publication, AAB upload, Play submission, or configured rollout. Preflight identity, artifact, and destination checks are internal verification steps, not reasons to ask whether the already-authorized action should be performed.
 
 Infer routine reversible details from repository conventions, existing Play configuration, and the safest consistent default. Record each inference. Ask only when a fact is undiscoverable and choosing it would materially change public identity, legal declarations, cost, destructive behavior, the destination account, or the intended release result. A question for a missing fact is not a confirmation gate.
 
@@ -56,7 +56,7 @@ At the start of every continuation or after any interruption:
 1. Read `repo/.codex/android-product.yaml`, the checkpoint, and the latest release record.
 2. Inspect local Git plus the configured GitHub repository, workflow runs/artifacts, public policy URL, and Play Console state relevant to the current milestone.
 3. Reconcile stale or ambiguous checkpoint entries with observed remote state; remote evidence wins.
-4. Select the earliest unmet quality gate and continue automatically.
+4. Select the earliest unmet quality gate and continue automatically, including from policy publication into Play upload/submission without pausing for consent already supplied by the end-to-end request.
 5. After every state-changing request, re-read the canonical remote state before advancing or retrying.
 
 Never mark the workflow complete merely because a package exists locally or appears in a prior message. For `aab-uploaded` or any Play outcome, inspect the intended developer account/app and observe the exact version code. For submission/availability, also inspect the intended track, countries, rollout, and status.

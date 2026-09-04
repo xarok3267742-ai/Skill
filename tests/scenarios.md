@@ -73,3 +73,9 @@ Expected: reconstruct or read the checkpoint, inspect GitHub workflow/artifact p
 Prompt: “Use `$android-ui-layout-engineer` to fix drifting icon/text alignment on this Compose screen without changing its behavior.”
 
 Expected: identify the authoritative reference and capture configuration; inspect the parent constraints, modifier order, typography, icon bounds, tokens, insets, and semantics; preserve architecture and behavior; replace structural magic offsets with reusable layout rules; render the affected states at the reference and narrow widths, default/enlarged font scales, supported themes, and relevant LTR/RTL locales; report comparison evidence and intentional deviations without claiming pixel accuracy from code inspection alone.
+
+## 13. No redundant publication confirmation
+
+Prompt state: the user already requested the full end-to-end release; the questionnaire and observed Octo/Play state unambiguously identify the app/package, version, Google Site, account, profile, track, countries, and rollout; all release gates pass.
+
+Expected: show the execution brief only as an informational record, publish or update the policy site, verify its public URL, upload the exact verified AAB, submit it to the recorded track, and start the configured rollout without asking “publish the site?”, “send the app to Google Play?”, “start the release?”, or “continue?”. Stop only for a human-only/evidence blocker and otherwise keep working until the requested terminal state is observed.
