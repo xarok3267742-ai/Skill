@@ -1,6 +1,6 @@
 # Octo Browser and Google Play Console
 
-Use mutations in this procedure only after the version-specific authorization summary has been confirmed. Read-only profile selection and identity discovery may occur near the beginning of intake.
+Use mutations in this procedure when the user's explicit end-to-end build/release request and intake answers place them inside the recorded execution scope. Do not request an additional authorization summary. Read-only profile selection and identity discovery may occur near the beginning of intake.
 
 Check the current Octo automation documentation before connecting: https://docs.octobrowser.net/en/api/start-api/
 
@@ -12,9 +12,9 @@ Use accessibility roles, labels, visible text, and current DOM state instead of 
 
 ## Early read-only identity discovery
 
-Ask the user to select the Octo profile near the beginning of intake. Connect to that exact profile without navigating away from or changing unrelated account state. Inspect the active Google identity, Play developer display name, and Google Sites availability only as needed. Record candidate email/name values as discovered and redact them from logs and screenshots. Do not change the account, create a site, or publish anything during this phase. The user must confirm which values may appear publicly in the policy and which Google Site is the release destination.
+Ask the user to select the Octo profile near the beginning of intake. Connect to that exact profile without navigating away from or changing unrelated account state. Inspect the active Google identity, Play developer display name, existing public developer contact, and Google Sites availability only as needed. Record candidate email/name values as discovered and redact them from logs and screenshots. Prefer values already published for the selected Play developer; ask a factual question only if the public identity or destination remains ambiguous. Do not change the account, create a site, or publish anything during this read-only phase.
 
-Use the same selected profile for the policy generator, Google Sites, and Play Console unless the authorization summary explicitly names different profiles. If identity changes between stages, stop before mutation.
+Use the same selected profile for the policy generator, Google Sites, and Play Console unless the recorded execution scope explicitly names different profiles. If identity changes between stages, stop before mutation.
 
 ## Preflight identity
 
@@ -32,7 +32,7 @@ A mismatch is a blocker. Do not switch accounts, apps, packages, tracks, or coun
 
 Inspect the target track and App bundle explorer for the version code before uploading. If the exact bundle already exists, reconcile its certificate, checksum/provenance when available, release notes, and status instead of uploading again.
 
-Upload the locally verified artifact from the exact successful GitHub run. Resolve warnings only when supported by code, policy evidence, or confirmed product facts. Reconcile declarations and store assets with the tested build. Then submit and roll out according to the confirmed track, countries, percentage, and managed-publishing setting.
+Upload the locally verified artifact from the exact successful GitHub run. Resolve warnings only when supported by code, policy evidence, or verified product facts. Reconcile declarations and store assets with the tested build. Then submit and roll out according to the recorded track, countries, percentage, and managed-publishing setting.
 
 After every create, upload, save, submit, or rollout action, re-read the resulting page and record the visible status. On timeout or ambiguous feedback, reload or navigate to the canonical status page before any retry.
 

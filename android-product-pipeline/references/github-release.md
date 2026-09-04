@@ -6,13 +6,13 @@ Current primary references:
 - GitHub Actions secrets: https://docs.github.com/en/actions/reference/security/secrets
 - Android app signing: https://developer.android.com/studio/publish/app-signing
 
-Use an existing GitHub repository when specified; otherwise create the confirmed private repository. Work on a `codex/<task-slug>` branch, push milestone commits, open a pull request, and require the agreed build, test, lint, QA, and policy gates. Squash-merge only after required checks succeed and known exceptions are recorded.
+Use an existing GitHub repository when specified; otherwise create a private repository within the recorded execution scope. Work on a `codex/<task-slug>` branch, push milestone commits, open a pull request, and require the agreed build, test, lint, QA, and policy gates. Squash-merge only after required checks succeed and known exceptions are recorded.
 
 ## Signing identities
 
 Use Play App Signing with a separate upload key. Keep the upload keystore in `private/`, its passwords in Keychain, and CI copies in GitHub encrypted secrets. Restore the keystore into a runner temporary directory with restrictive permissions, build the release bundle, then remove the temporary file in an always-run cleanup step.
 
-Create a dedicated SSH signing key for release tags when none is configured. Store the private key in the system key store, register the public key as a GitHub signing key, and record the public fingerprint. Do not replace an existing identity or register a key until that setup is included in the confirmed authorization summary.
+Create a dedicated SSH signing key for release tags when none is configured and this setup is required by the recorded release scope. Store the private key in the system key store, register the public key as a GitHub signing key, and record the public fingerprint. Never replace or rotate an existing signing identity without a separate explicit instruction.
 
 ## Workflow contract
 

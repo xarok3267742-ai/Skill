@@ -12,7 +12,7 @@ Seven Codex skills coordinate Android product discovery, competitor research, UI
 - `google-play-aso-expert` — competitor research, listing, localization, and creatives
 - `android-release-manager` — GitHub, CI, signing, policy deployment, Octo, and Play release
 
-Invoke the full workflow explicitly with `$android-product-pipeline`. The intake is adaptive and includes development complexity from 0 through 10, interface/content/listing languages, privacy-policy hosting, GitHub, Play Console, Octo profile, and release parameters.
+Invoke the full workflow explicitly with `$android-product-pipeline`. The intake is adaptive and includes development complexity from 0 through 10, interface/content/listing languages, privacy-policy hosting, GitHub, Play Console, Octo profile, release parameters, and the desired terminal outcome. An explicit end-to-end request plus intake answers drives autonomous execution without a separate confirmation gate; human-only challenges and missing legal facts remain blockers.
 
 ## Security boundary
 

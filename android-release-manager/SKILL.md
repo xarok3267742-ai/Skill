@@ -5,11 +5,11 @@ description: Prepare, verify, and deliver Android releases through GitHub and Go
 
 # Android Release Manager
 
-Turn a tested commit into a traceable, idempotent release. Preserve the user's selected app, GitHub repository, Play account, Octo profile, countries, track, and rollout. External mutations require one explicit version-specific authorization summary; after it is confirmed, continue without redundant confirmation unless a human-only or evidence blocker is reached.
+Turn a tested commit into a traceable, idempotent release. Preserve the user's selected app, GitHub repository, Play account, Octo profile, countries, track, rollout, and desired terminal outcome. An explicit request to build/release/publish plus recorded intake answers authorizes ordinary in-scope GitHub, CI, policy-site, AAB-upload, submission, and rollout operations. Do not ask for another confirmation. Stop only for a human-only/evidence blocker or when the observed terminal criteria are satisfied.
 
 ## Preflight
 
-Confirm the merged commit candidate, application ID, variant, version code/name, form factors, languages, release notes, markets, public privacy-policy deployment and URL, Play developer account/app, Octo profile, track, rollout, managed-publishing choice, QA/policy disposition, and containment plan. Verify current official Google Play requirements, account eligibility, target SDK rules, and form-factor requirements.
+Resolve the merged commit candidate, application ID, variant, version code/name, form factors, languages, release notes, markets, public privacy-policy deployment and URL, Play developer account/app, Octo profile, track, rollout, managed-publishing choice, QA/policy disposition, containment plan, and desired terminal outcome. Verify current official Google Play requirements, account eligibility, target SDK rules, and form-factor requirements.
 
 Read [references/github-actions.md](references/github-actions.md) before creating a repository, configuring secrets, merging a PR, or building a release. Read [references/octo-publishing.md](references/octo-publishing.md) before operating Play Console. Read [references/rollout.md](references/rollout.md) before choosing rollout and monitoring thresholds.
 
@@ -24,11 +24,11 @@ Read [references/github-actions.md](references/github-actions.md) before creatin
 
 ## Publish idempotently
 
-Before opening Play Console, generate or reconcile the authorized privacy-policy draft, publish it through the confirmed Google Site in the selected Octo profile, and verify its canonical HTTPS URL in a fresh unauthenticated session. Record the policy source commit, generator access date in the private release record, Google Sites destination/publication time, content hash, effective date, locales, and final URL. Do not name the generator in the public policy. If a custom domain is configured, verify domain ownership and HTTPS; otherwise report the Google-account and Google Sites URL dependency explicitly. Do not publish a generic policy that conflicts with the exact app/package or observed data behavior.
+Before opening Play Console, generate or reconcile the in-scope privacy-policy draft, publish it through the selected Google Site in the selected Octo profile, and verify its canonical HTTPS URL in a fresh unauthenticated session. Record the policy source commit, generator access date in the private release record, Google Sites destination/publication time, content hash, effective date, locales, and final URL. Do not name the generator in the public policy. If an in-scope custom domain is configured, verify ownership and HTTPS; otherwise report the Google-account and Google Sites URL dependency explicitly. Do not publish a generic policy that conflicts with the exact app/package or observed data behavior.
 
 Use the exact artifact downloaded from the successful GitHub run. Before upload or retry, inspect Play for the version code and current release status. Verify the visible Google account, developer account, app, package, track, countries, and rollout before mutation.
 
-After each upload, save, submit, or rollout action, re-read the resulting state. On timeout or ambiguous feedback, inspect the canonical status page before retrying. Never duplicate a version, release, tag, PR, workflow dispatch, or rollout.
+After each upload, save, submit, or rollout action, re-read the resulting state and update the execution checkpoint. On timeout or ambiguous feedback, inspect the canonical status page before retrying. Never duplicate a version, release, tag, PR, workflow dispatch, or rollout. A local artifact, dispatched workflow, completed upload request, or transient success message is not sufficient proof of completion.
 
 Stop with the draft preserved for CAPTCHA, 2FA, reauthentication, changed terms, insufficient permissions, unknown policy declarations, missing reviewer access, changed console flow, or signing-identity mismatch. Do not bypass or guess.
 

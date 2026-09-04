@@ -35,4 +35,4 @@ Read [references/review-format.md](references/review-format.md) before reporting
 - Remediation across code, declarations, listing, privacy policy, reviewer access, and observed behavior must remain consistent.
 - Never choose a legal or policy declaration merely to unblock release.
 
-Stop before changing Play Console or submitting forms unless the exact mutation is covered by the user's version-specific release authorization.
+Change Play Console or submit forms only when the user explicitly requested an end-to-end release and the exact app/version/account mutation is inside the recorded execution scope. Do not ask for a redundant confirmation, and never infer release authority from a review-only request.

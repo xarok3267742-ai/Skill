@@ -2,7 +2,7 @@
 
 Choose internal, closed, open, or production track based on the requested audience and risk. For production, prefer a staged rollout when rollback or server-side containment is limited.
 
-Check the developer account's current testing and production-access eligibility before promising a track. Do not silently substitute a test track for a confirmed production request; report the eligibility blocker and preserve the best valid draft.
+Check the developer account's current testing and production-access eligibility before promising a track. Do not silently substitute a test track for a user-stated production request; report the eligibility blocker and preserve the best valid draft.
 
 Define before release:
 

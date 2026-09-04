@@ -16,6 +16,7 @@ Use a user-selected project root. If none is provided for a greenfield app, prop
 |   `-- .github/workflows/
 |-- private/              mode 0700; never committed
 `-- artifacts/            downloaded release outputs and evidence
+    `-- pipeline-state.yaml Resumable, non-secret execution checkpoint
 ```
 
 For an existing repository, do not relocate it without permission. Create sibling `private` and `artifacts` directories at a safe project root, or record explicit absolute paths in the configuration.
@@ -63,13 +64,17 @@ privacy_policy:
 credentials:
   octo_api_keychain_service: "codex.android-product-pipeline.octo-api"
   octo_api_keychain_account: "default"
+execution:
+  mode: "autonomous"
+  desired_outcome: "play-available"
+  scope_source: "explicit-user-request-and-intake"
 release:
   version_name: "1.0.0"
   version_code: 1
   rollout_percent: 100
 ```
 
-This file is configuration, not authorization. Validate complexity as an integer from 0 through 10, package-name syntax, allowed form-factor and track values, positive monotonic version codes, locale/country formats, rollout range, HTTPS policy URL, policy locale fallback, Google Sites destination, and page slug before using it. Store `public_developer_name` and `public_contact_email` only after the user confirms that the discovered values may be published. `credentials` contains locators only, never credential values.
+This file records the execution target but cannot broaden the user's task scope. Validate complexity as an integer from 0 through 10, package-name syntax, allowed form-factor, track and desired-outcome values, positive monotonic version codes, locale/country formats, rollout range, HTTPS policy URL, policy locale fallback, Google Sites destination, and page slug before using it. Store `public_developer_name` and `public_contact_email` only when they are already public for the selected developer or otherwise established by user-stated facts. `credentials` contains locators only, never credential values.
 
 ## Secret boundary
 

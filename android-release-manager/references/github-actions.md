@@ -8,9 +8,9 @@ Check the current official signing and secrets documentation before setup:
 
 ## Repository workflow
 
-Use the confirmed existing repository or create the confirmed private GitHub repository. Work on a `codex/<task-slug>` branch, push coherent commits, open a pull request, and require the agreed build, test, lint, QA, and policy checks. Squash-merge only after required checks pass and exceptions are recorded.
+Use the user-selected existing repository or create a private GitHub repository inside the recorded release scope. Work on a `codex/<task-slug>` branch, push coherent commits, open a pull request, and require the agreed build, test, lint, QA, and policy checks. Squash-merge only after required checks pass and exceptions are recorded.
 
-For release tags, use a dedicated SSH signing key. Keep its private key in the system key store and register only the public signing key in GitHub. Verify the tag signature locally and its expected GitHub verification state before using it as release provenance. Key creation or registration must be included in the release authorization summary.
+For release tags, use a dedicated SSH signing key. Keep its private key in the system key store and register only the public signing key in GitHub. Verify the tag signature locally and its expected GitHub verification state before using it as release provenance. Key creation and public-key registration may proceed automatically when required by the explicit release request; key replacement or rotation requires a separate explicit instruction.
 
 ## Upload key and CI secrets
 
