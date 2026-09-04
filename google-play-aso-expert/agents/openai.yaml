@@ -1,0 +1,6 @@
+interface:
+  display_name: "Google Play ASO Expert"
+  short_description: "Research competitors and improve Play conversion"
+  default_prompt: "Use $google-play-aso-expert to research competitors and create an evidence-based Google Play listing."
+policy:
+  allow_implicit_invocation: true

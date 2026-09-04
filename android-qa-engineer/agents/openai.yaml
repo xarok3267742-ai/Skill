@@ -1,0 +1,6 @@
+interface:
+  display_name: "Android QA Engineer"
+  short_description: "Test Android releases across devices and locales"
+  default_prompt: "Use $android-qa-engineer to test this Android build and produce a reproducible release recommendation."
+policy:
+  allow_implicit_invocation: true

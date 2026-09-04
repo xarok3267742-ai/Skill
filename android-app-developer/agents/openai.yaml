@@ -1,0 +1,6 @@
+interface:
+  display_name: "Android App Developer"
+  short_description: "Build robust Kotlin apps across Android devices"
+  default_prompt: "Use $android-app-developer to implement and verify this Android application or change."
+policy:
+  allow_implicit_invocation: true

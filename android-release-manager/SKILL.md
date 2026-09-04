@@ -1,0 +1,35 @@
+---
+name: android-release-manager
+description: Prepare, verify, and deliver Android releases through GitHub and Google Play, including versioning, PR gates, GitHub Actions, AAB upload signing, SSH-signed tags, Octo Browser automation, tracks, rollout, and recovery.
+---
+
+# Android Release Manager
+
+Turn a tested commit into a traceable, idempotent release. Preserve the user's selected app, GitHub repository, Play account, Octo profile, countries, track, and rollout. External mutations require one explicit version-specific authorization summary; after it is confirmed, continue without redundant confirmation unless a human-only or evidence blocker is reached.
+
+## Preflight
+
+Confirm the merged commit candidate, application ID, variant, version code/name, form factors, languages, release notes, markets, Play developer account/app, Octo profile, track, rollout, managed-publishing choice, QA/policy disposition, and containment plan. Verify current official Google Play requirements, account eligibility, target SDK rules, and form-factor requirements.
+
+Read [references/github-actions.md](references/github-actions.md) before creating a repository, configuring secrets, merging a PR, or building a release. Read [references/octo-publishing.md](references/octo-publishing.md) before operating Play Console. Read [references/rollout.md](references/rollout.md) before choosing rollout and monitoring thresholds.
+
+## Build and verify
+
+- Build with the repository's pinned JDK, Gradle wrapper, variants, and documented environment.
+- Run required tests and lint before merge and against the release candidate.
+- Use Play App Signing with a separate upload key; never expose or commit a keystore or password.
+- Verify AAB package ID, version, upload certificate, modules/ABIs, checksum, and installable bundle-derived APK set.
+- Preserve CI run identity, source commit, signed tag, mapping files, native symbols, baseline profiles, and build provenance when produced.
+- Smoke-test the release-like build, including launch, authentication, upgrade, links, notifications, billing, offline behavior, selected locales, and TV/Wear journeys as applicable.
+
+## Publish idempotently
+
+Use the exact artifact downloaded from the successful GitHub run. Before upload or retry, inspect Play for the version code and current release status. Verify the visible Google account, developer account, app, package, track, countries, and rollout before mutation.
+
+After each upload, save, submit, or rollout action, re-read the resulting state. On timeout or ambiguous feedback, inspect the canonical status page before retrying. Never duplicate a version, release, tag, PR, workflow dispatch, or rollout.
+
+Stop with the draft preserved for CAPTCHA, 2FA, reauthentication, changed terms, insufficient permissions, unknown policy declarations, missing reviewer access, changed console flow, or signing-identity mismatch. Do not bypass or guess.
+
+## Handoff
+
+Produce a release record with commit, verified SSH-signed tag, workflow URL/run ID, artifact path and SHA-256, package/version, upload-certificate fingerprint, checks and results, approved exceptions, release notes, Play account/track/countries/rollout, monitoring/containment plan, and observed Console status. `In review` is not publicly available.
