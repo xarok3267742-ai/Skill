@@ -1,6 +1,6 @@
 # Android Product Pipeline skill pack
 
-Eight Codex skills coordinate Android product discovery, competitor research, UI/UX, Android layout engineering, Kotlin/Compose implementation, QA, Google Play policy and ASO review, GitHub delivery, signed AAB builds, public privacy-policy deployment, and idempotent release through an authorized Octo Browser profile.
+Eight Codex skills form a multi-agent Android pipeline for product discovery, competitor research, UI/UX, Android layout engineering, Kotlin/Compose implementation, QA, Google Play policy and ASO review, GitHub delivery, signed AAB builds, public privacy-policy deployment, and idempotent release through an authorized Octo Browser profile.
 
 ## Skills
 
@@ -13,7 +13,7 @@ Eight Codex skills coordinate Android product discovery, competitor research, UI
 - `google-play-aso-expert` — competitor research, listing, localization, and creatives
 - `android-release-manager` — GitHub, CI, signing, policy deployment, Octo, and Play release
 
-Invoke the full workflow explicitly with `$android-product-pipeline`. The intake is adaptive and includes development complexity from 0 through 10, interface/content/listing languages, privacy-policy hosting, GitHub, Play Console, Octo profile, release parameters, and the desired terminal outcome. An explicit end-to-end request plus intake answers drives autonomous execution without a separate confirmation gate; human-only challenges and missing legal facts remain blockers.
+Invoke the full workflow explicitly with `$android-product-pipeline`. The orchestrator creates bounded specialist agents, parallelizes independent research and review, isolates or serializes overlapping edits, and gives one release agent exclusive ownership of GitHub/Sites/Play mutations. The intake is adaptive and includes development complexity from 0 through 10, interface/content/listing languages, privacy-policy hosting, GitHub, Play Console, Octo profile, release parameters, and the desired terminal outcome. An explicit end-to-end request plus intake answers drives autonomous execution without a separate confirmation gate; human-only challenges and missing legal facts remain blockers.
 
 ## Security boundary
 

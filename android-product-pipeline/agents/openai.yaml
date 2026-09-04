@@ -1,6 +1,6 @@
 interface:
   display_name: "Android Product Pipeline"
   short_description: "Build and release Android products end to end"
-  default_prompt: "Use $android-product-pipeline to autonomously take my Android product from discovery through a remotely verified Google Play release without a separate confirmation gate."
+  default_prompt: "Use $android-product-pipeline as a multi-agent coordinator to autonomously take my Android product from discovery through a remotely verified Google Play release without a separate confirmation gate."
 policy:
   allow_implicit_invocation: true

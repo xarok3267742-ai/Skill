@@ -6,7 +6,7 @@ Use these prompts in an isolated temporary workspace. Do not create remote repos
 
 Prompt: “Use `$android-product-pipeline` to create a new Android habit tracker. I have only the idea.”
 
-Expected: inspect the empty workspace; ask adaptive product questions in batches of at most three; ask for complexity 0-10 and language/default/fallback/listing locales; research 5-8 current competitors; propose native Kotlin/Compose; route approved screens through `$android-ui-layout-engineer`; show an execution brief and continue automatically without asking for confirmation when the original request includes end-to-end build/release intent.
+Expected: inspect the empty workspace; ask adaptive product questions in batches of at most three; ask for complexity 0-10 and language/default/fallback/listing locales; create real bounded specialist agents when delegation is available; research 5-8 current competitors; propose native Kotlin/Compose; route approved screens through `$android-ui-layout-engineer`; show an execution brief and continue automatically without asking for confirmation when the original request includes end-to-end build/release intent.
 
 ## 2. Android TV media app
 
@@ -79,3 +79,9 @@ Expected: identify the authoritative reference and capture configuration; inspec
 Prompt state: the user already requested the full end-to-end release; the questionnaire and observed Octo/Play state unambiguously identify the app/package, version, Google Site, account, profile, track, countries, and rollout; all release gates pass.
 
 Expected: show the execution brief only as an informational record, publish or update the policy site, verify its public URL, upload the exact verified AAB, submit it to the recorded track, and start the configured rollout without asking “publish the site?”, “send the app to Google Play?”, “start the release?”, or “continue?”. Stop only for a human-only/evidence blocker and otherwise keep working until the requested terminal state is observed.
+
+## 14. Multi-agent coordination and single-writer release
+
+Prompt: “Use `$android-product-pipeline` to research, build, test, and publish a new multilingual phone/tablet app.”
+
+Expected: the primary agent remains coordinator and creates concrete specialist agents with explicit skills and bounded inputs/outputs; independent research, policy inventory, and immutable-candidate reviews run concurrently; source writers use non-overlapping paths in isolated worktrees or are serialized; parallel Gradle/test/render agents also receive separate worktrees, build outputs, emulator/device leases, ADB targets, and ports; canonical app strings, listing sources, and privacy-policy files have explicit owners; only the coordinator writes the canonical checkpoint; only one `$android-release-manager` owns remote GitHub release, Google Sites, Octo, AAB upload, Play submission, and rollout mutations. The parent waits for and reviews required results, does not finish while workers are active, and never starts a second release agent after an ambiguous mutation until canonical remote state is reconciled.

@@ -33,6 +33,11 @@ desired_outcome: "play-available"
 phase: "research"
 status: "in_progress"
 last_verified_at: "ISO-8601 timestamp"
+coordination:
+  mode: "multi-agent"
+  run_id: "run-id"
+  release_writer: null
+  agents: {}
 milestones:
   research: {status: "in_progress", evidence: []}
   design: {status: "pending", evidence: []}
@@ -47,14 +52,14 @@ milestones:
 blocker: null
 ```
 
-Update a milestone only after observing evidence such as a commit SHA, PR state, workflow run ID/conclusion, artifact checksum/certificate, public policy URL/content hash, Play version code, track release ID, or visible Console status. A planned action, local file, dispatched workflow, button click, toast, navigation, or assistant statement is not evidence of completion.
+The coordinator alone updates canonical checkpoint state. Record each delegated role, agent/task identifier, source revision, assigned paths, status, evidence directory, and release-writer lease under `coordination`; never store prompts containing secrets. Update a milestone only after observing evidence such as a commit SHA, PR state, workflow run ID/conclusion, artifact checksum/certificate, public policy URL/content hash, Play version code, track release ID, or visible Console status. A planned action, local file, dispatched workflow, button click, toast, navigation, or assistant statement is not evidence of completion.
 
 ## Resume loop
 
 At the start of every continuation or after any interruption:
 
 1. Read `repo/.codex/android-product.yaml`, the checkpoint, and the latest release record.
-2. Inspect local Git plus the configured GitHub repository, workflow runs/artifacts, public policy URL, and Play Console state relevant to the current milestone.
+2. Inspect local Git/worktrees, available live-agent state and role evidence, plus the configured GitHub repository, workflow runs/artifacts, public policy URL, and Play Console state relevant to the current milestone.
 3. Reconcile stale or ambiguous checkpoint entries with observed remote state; remote evidence wins.
 4. Select the earliest unmet quality gate and continue automatically, including from policy publication into Play upload/submission without pausing for consent already supplied by the end-to-end request.
 5. After every state-changing request, re-read the canonical remote state before advancing or retrying.

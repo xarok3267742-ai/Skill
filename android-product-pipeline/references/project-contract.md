@@ -15,11 +15,13 @@ Use a user-selected project root. If none is provided for a greenfield app, prop
 |   |   `-- privacy-policy/ Canonical policy source by locale
 |   `-- .github/workflows/
 |-- private/              mode 0700; never committed
+|-- worktrees/            temporary isolated agent worktrees; never committed
 `-- artifacts/            downloaded release outputs and evidence
+    |-- agents/           per-run, per-agent reports and test evidence
     `-- pipeline-state.yaml Resumable, non-secret execution checkpoint
 ```
 
-For an existing repository, do not relocate it without permission. Create sibling `private` and `artifacts` directories at a safe project root, or record explicit absolute paths in the configuration.
+For an existing repository, do not relocate it without permission. Create sibling `private`, `worktrees`, and `artifacts` directories at a safe project root, or record explicit absolute paths in the configuration. Keep `worktrees/` and `artifacts/agents/` outside the application repository; if that is impossible, ignore them before agent work begins and verify they are not tracked before every push.
 
 ## `android-product.yaml`
 
@@ -65,7 +67,8 @@ credentials:
   octo_api_keychain_service: "codex.android-product-pipeline.octo-api"
   octo_api_keychain_account: "default"
 execution:
-  mode: "autonomous"
+  mode: "autonomous-multi-agent"
+  parallel_workers: "auto"
   desired_outcome: "play-available"
   scope_source: "explicit-user-request-and-intake"
 release:
@@ -74,7 +77,7 @@ release:
   rollout_percent: 100
 ```
 
-This file records the execution target but cannot broaden the user's task scope. Validate complexity as an integer from 0 through 10, package-name syntax, allowed form-factor, track and desired-outcome values, positive monotonic version codes, locale/country formats, rollout range, HTTPS policy URL, policy locale fallback, Google Sites destination, and page slug before using it. Store `public_developer_name` and `public_contact_email` only when they are already public for the selected developer or otherwise established by user-stated facts. `credentials` contains locators only, never credential values.
+This file records the execution target but cannot broaden the user's task scope. `parallel_workers: "auto"` means use the available delegation capacity and the multi-agent contract; it is not a fixed promise of concurrency. Validate complexity as an integer from 0 through 10, package-name syntax, allowed form-factor, track and desired-outcome values, positive monotonic version codes, locale/country formats, rollout range, HTTPS policy URL, policy locale fallback, Google Sites destination, and page slug before using it. Store `public_developer_name` and `public_contact_email` only when they are already public for the selected developer or otherwise established by user-stated facts. `credentials` contains locators only, never credential values.
 
 ## Secret boundary
 
