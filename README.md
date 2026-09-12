@@ -1,26 +1,25 @@
 # Android Product Pipeline skill pack
 
-Eight Codex skills form a multi-agent Android pipeline for product discovery, competitor research, UI/UX, Android layout engineering, Kotlin/Compose implementation, QA, Google Play policy and ASO review, production-grade truthful store screenshots, GitHub delivery, signed AAB builds, public privacy-policy deployment, and idempotent release through an authorized Octo Browser profile.
+Eight focused Codex skills cover an Android product from discovery to a verified Google Play release. The pack is organized for progressive disclosure: each `SKILL.md` is a small decision router, while detailed procedures live in references that are loaded only for the relevant operation.
 
-## Skills
+Invoke the complete workflow with `$android-product-pipeline`. Use a specialist directly for isolated work:
 
-- `android-product-pipeline` — end-to-end orchestrator
-- `android-app-developer` — phone, tablet, Android TV, and Wear OS implementation
-- `mobile-ui-ux-designer` — implementation-ready flows and design systems
-- `android-ui-layout-engineer` — precise adaptive layout implementation and rendered visual verification
-- `android-qa-engineer` — test strategy and release evidence
-- `google-play-policy-reviewer` — current policy and declaration review
-- `google-play-aso-expert` — competitor research, listing, localization, and creatives
-- `android-release-manager` — GitHub, CI, signing, policy deployment, Octo, and Play release
+- `$mobile-ui-ux-designer` — experience and design intent;
+- `$android-app-developer` — architecture and application behavior;
+- `$android-ui-layout-engineer` — layout implementation and rendered comparison;
+- `$android-qa-engineer` — reproducible test evidence;
+- `$google-play-policy-reviewer` — current policy and disclosure review;
+- `$google-play-aso-expert` — research, listing, localization, and store creatives;
+- `$android-release-manager` — GitHub, signing, Fastlane, Octo, and Play delivery.
 
-Invoke the full workflow explicitly with `$android-product-pipeline`. The orchestrator creates bounded specialist agents, parallelizes independent research and review, isolates or serializes overlapping edits, and gives one release agent exclusive ownership of GitHub/Sites/Play mutations. By default every product has development budget `0`, is free to download, and has no monetization: the pack adds no ads, purchases, subscriptions, paywalls, paid APIs/assets/infrastructure, or auto-converting trials unless the user explicitly changes that app's contract. Repeatable AAB, metadata, screenshot, and track delivery uses pinned Fastlane after one-time Play initialization; Octo handles bootstrap, declarations, Google Sites, and final verification. Full publication defaults to production at 100% without optional Play testing tracks, while CI/QA remains mandatory; account-specific testing requirements imposed by Play are never bypassed. The intake is adaptive and includes development complexity from 0 through 10, interface/content/listing languages, privacy-policy hosting, GitHub, Play Console, Octo profile, release parameters, and the desired terminal outcome. An explicit end-to-end request plus intake answers drives autonomous execution without a separate confirmation gate; human-only challenges and missing legal facts remain blockers.
+Defaults are Kotlin/Compose for greenfield apps, zero development spend, free download, no monetization, a private GitHub repository, and direct production release at 100% when Play eligibility allows it. These are defaults, not permission to contradict the user, an existing project, or current platform requirements.
 
-## Security boundary
+End-to-end publication continues without redundant confirmation after the exact app, account, package, version, site, track, countries, and rollout are resolved. Human-only authentication, missing legal facts, signing mismatches, or mandatory Play prerequisites remain explicit blockers. Completion requires observed remote state; an AAB, upload click, or `In review` status is not a live release.
 
-The pack contains no credentials. Application source stays in a private GitHub repository by default. Upload keystores and local private files stay outside Git in a mode-`0700` directory; passwords, signing credentials, and the Octo API token belong in macOS Keychain or the active platform secret store. Only public certificates and non-secret Keychain entry locators may be committed.
+Secrets, upload keys, tokens, browser data, and private certificates never enter Git or the ZIP. Non-secret project configuration belongs in `repo/.codex/android-product.yaml`; private material stays in the system secret store or a mode-`0700` project directory.
 
-Privacy-policy drafts can be prepared through the configured App Privacy Policy Generator, then reviewed against the app and stored with its source. The public policy does not name the drafting tool. Publication uses Google Sites in the selected Octo profile by default and must produce a public, app-specific HTTPS page requiring no login or device-bound session. A user-controlled custom domain is preferred for URL portability; GitHub Pages or another static host is a fallback. Policies must transparently identify the confirmed responsible developer or legal entity and must not be used to conceal ownership or evade platform enforcement.
+The structure follows OpenAI’s guidance on short descriptions, conditional references, fewer prescriptive recipes, clear decision boundaries, and explicit completion criteria: [Rethinking skills and prompts for GPT-6 Astra](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra).
 
-## Validate
+## Validation
 
-Run `tests/validate_pack.py`, then run the official `quick_validate.py` from Codex's `skill-creator` skill against every skill directory in an isolated environment with PyYAML installed. Forward-test contracts are listed in `tests/scenarios.md` and must not mutate a real GitHub repository or Play Console.
+Run `python3 tests/validate_pack.py`, then run `quick_validate.py` from `$skill-creator` for every skill. The local validation suite is read-only with respect to GitHub, Octo Browser, Google Sites, and Play Console.

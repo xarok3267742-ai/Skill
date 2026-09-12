@@ -1,6 +1,6 @@
 interface:
-  display_name: "Mobile UI UX Designer"
-  short_description: "Design Android experiences for phone, TV, and Wear"
-  default_prompt: "Use $mobile-ui-ux-designer to design or audit this Android experience with implementation-ready guidance."
+  display_name: "Mobile UI/UX Designer"
+  short_description: "Design implementation-ready Android experiences"
+  default_prompt: "Use $mobile-ui-ux-designer to design or audit this Android experience."
 policy:
   allow_implicit_invocation: true

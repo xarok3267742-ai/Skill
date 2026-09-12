@@ -1,6 +1,6 @@
 interface:
   display_name: "Android UI Layout Engineer"
-  short_description: "Build and verify stable Android layouts"
-  default_prompt: "Use $android-ui-layout-engineer to implement or correct this Android layout and verify it across the required screens, locales, and UI states."
+  short_description: "Implement and verify precise Android layouts"
+  default_prompt: "Use $android-ui-layout-engineer to fix and visually verify this Android layout."
 policy:
   allow_implicit_invocation: true

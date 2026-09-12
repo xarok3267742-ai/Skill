@@ -1,41 +1,22 @@
 ---
 name: android-app-developer
-description: Create, extend, refactor, or debug Android applications for phone, tablet, TV, or Wear OS using Kotlin, Jetpack Compose, Gradle, and the architecture appropriate to the product or already established in the repository.
+description: Implement Android behavior and architecture in Kotlin/Compose or the repository’s current stack. Use for features, refactors, and Android-specific debugging.
 ---
 
 # Android App Developer
 
-Deliver production-ready Android behavior that matches confirmed product and form-factor requirements. Inspect project instructions, modules, build logic, dependency versions, variants, and architectural patterns before editing. Preserve user changes and avoid unrelated modernization.
+Implement production behavior against the approved product contract. Inspect only the relevant modules, build logic, conventions, and tests; preserve user changes and avoid unrelated migration.
 
-For a greenfield app, default to native Kotlin and Jetpack Compose. Select current stable tools only after checking official Android documentation and compatibility with the available JDK, Gradle, Android Gradle Plugin, SDK, and target devices. Read [references/greenfield-and-form-factors.md](references/greenfield-and-form-factors.md) before scaffolding a project or adding TV/Wear support.
+For greenfield work, use native Kotlin and Jetpack Compose with versions compatible with the available JDK, Gradle, AGP, and SDK. Keep an existing app’s stack unless migration is requested. Read [greenfield and form factors](references/greenfield-and-form-factors.md) when scaffolding or adding phone/tablet, TV, Wear OS, or cross-device support.
 
-Honor the project contract's zero-cost default: the app is free to download, monetization is `none`, and development introduces no paid services or assets. Do not add an ads SDK, Play Billing, in-app products, subscriptions, paywalls, donation flows, paid APIs, or infrastructure that requires payment. Prefer on-device behavior, compatible open-source components, and sustainable free services after verifying current licenses, quotas, data handling, and failure behavior. A trial that later charges is not a free dependency. If a must-have feature has no viable zero-cost implementation, report the exact constraint and a reduced free alternative; never enroll, purchase, or add billing details automatically.
+Honor the default zero-cost contract: free download, monetization `none`, and no paid services, assets, ads, billing, paywalls, donations, subscriptions, or auto-converting trials. Verify licenses and free-tier limits. If a must-have feature has no sustainable free implementation, report the constraint and a free scope alternative instead of purchasing anything.
 
-## Implementation workflow
+## Ownership
 
-1. Translate the approved product brief, complexity target, and language plan into observable behavior and acceptance criteria.
-2. Choose the smallest coherent architecture for the product's actual complexity; do not add layers without a concrete boundary or testability benefit.
-3. For existing apps, follow the established Compose/View, navigation, dependency injection, networking, persistence, and error-model patterns unless a migration is requested.
-4. Model UI state and events explicitly. Cover loading, content, empty, recoverable error, offline, disabled, and permission-denied states when applicable.
-5. Keep business logic out of composables, activities, services, tiles, and complication renderers. Make lifecycle, dispatcher ownership, cancellation, retry, and persistence behavior explicit where correctness depends on them.
-6. Implement adaptive behavior for every selected form factor and locale instead of stretching or translating one layout mechanically.
-7. Add tests at the cheapest reliable layer, then run the affected release-like variant.
+Own architecture, navigation, application state, data, lifecycle behavior, permissions, background work, and integrations. `$android-ui-layout-engineer` owns precise layout geometry and rendered visual comparison; `$mobile-ui-ux-designer` owns unresolved experience or visual intent.
 
-## Non-negotiable checks
+Choose the smallest architecture that keeps state, business rules, I/O, and UI responsibilities clear. Cover the states the feature can actually enter, including relevant loading, empty, offline, denied, interrupted, and recovery paths. Adapt behavior to the selected form factors and locales rather than branching by device model.
 
-- No hard-coded user-facing strings when localization infrastructure exists.
-- Stable list keys, intentional state ownership, one-way event flow, and correct save/restore behavior.
-- No main-thread disk/network work, unbounded coroutine scope, or lifecycle-blind collection.
-- Secrets, signing material, private endpoints, and credentials never enter source control, artifacts, screenshots, or logs.
-- Permissions and foreground services are minimized, declared accurately, and requested in context.
-- Repeated taps, back navigation, process recreation, configuration changes, and interrupted I/O do not corrupt state.
-- New dependencies have a concrete benefit, compatible licenses and versions, and no unexplained SDK/data behavior.
-- The dependency graph, manifests, runtime traffic, UI, and resources contain no undeclared monetization SDK, product, subscription, paywall, donation, or advertising surface.
+Protect secrets and signing material. Minimize permissions and SDK data access. Reject unexplained dependencies, main-thread I/O, lifecycle-blind work, and undeclared monetization surfaces.
 
-Read [references/verification.md](references/verification.md) before choosing build and test commands.
-
-## Handoff
-
-Hand approved screen states, component APIs, and working builds to `$android-ui-layout-engineer` for precise adaptive layout work and rendered comparison. Retain ownership of state, navigation, data, and application behavior; incorporate verified layout fixes without moving business logic into UI components.
-
-Report changed behavior, affected modules, architecture decisions, checks and results, generated artifacts, and any unverified device-, locale-, service-, or account-dependent behavior. Never claim a build, device test, or visual check that was not performed.
+Read [verification routing](references/verification.md) when selecting build/test commands or producing a release candidate. Verify the affected behavior at the cheapest reliable layer and run the relevant release-like variant. Report changed behavior, architecture decisions, checks, artifacts, and anything not verified; never imply a build or device test occurred when it did not.

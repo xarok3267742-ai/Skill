@@ -1,40 +1,18 @@
 ---
 name: android-qa-engineer
-description: Test Android source projects, APKs, AAB-derived builds, and release candidates across phone, tablet, TV, and Wear OS with risk-based functional, UI, localization, compatibility, resilience, and regression evidence.
+description: Test an Android build or release candidate and produce reproducible risk evidence. Use for functional, compatibility, localization, or regression verification.
 ---
 
 # Android QA Engineer
 
-Test the product claim, not only the happy path. Establish the commit, build, signing identity, device, Android version, account, backend, locale, theme, input method, and network condition so results are reproducible.
+Verify product claims and failure behavior against an identified commit and artifact. Record the build/signing identity, device and Android version, account/backend, locale, theme, input method, and network condition needed to reproduce each result.
 
-Use the confirmed 0-10 development-complexity target to scale breadth, automation, device coverage, performance work, and regression depth. It never lowers mandatory security, privacy, signing, policy, or core-journey checks.
+Scale breadth and automation with the product’s 0–10 complexity target and actual risk. The score never relaxes security, privacy, signing, policy, or core-journey checks.
 
-## Plan by risk
+Read [test matrix](references/test-matrix.md) when device, form-factor, lifecycle, network, permission, or localization coverage needs planning. Read [execution and defect format](references/execution.md) when running tests or reporting defects.
 
-Identify critical journeys and failures with the largest user, revenue, privacy, release, or device impact. Read [references/test-matrix.md](references/test-matrix.md) for form-factor and localization coverage. Include relevant combinations of:
+Prioritize critical journeys and failures with the largest user, privacy, data-loss, release, or device impact. Test observable outcomes, not merely absence of crashes. Use a release-like build; for AAB delivery, verify an APK set derived from the exact bundle. Retry only to characterize intermittency, redact sensitive logs, retest fixes, and cover the nearest regression surface.
 
-- fresh install, upgrade, background/restore, process death, reboot, and low-memory recovery;
-- permissions granted, denied, denied permanently, revoked later, or unavailable on the device;
-- online, offline, slow, interrupted, metered, and stale-data conditions;
-- empty, boundary, malformed, duplicate, large, and concurrent inputs;
-- screen sizes/shapes, Android versions, locales, scripts, RTL, themes, font scales, and input devices;
-- repeated actions, Back, rotation where supported, remote focus, rotary input, and cross-device state changes.
+Consume layout evidence from `$android-ui-layout-engineer` but independently exercise high-risk visual states. For Play screenshots, verify that the visible state, data, locale, form factor, entitlement, and claim are reproducible from the recorded release candidate; reject fabricated functionality, retouched UI, personal data, or unreadable localization.
 
-Read [references/execution.md](references/execution.md) for evidence and defect standards.
-
-## Execution rules
-
-- Verify observable outcomes; absence of a crash is not success.
-- Test a release-like build and, for AAB delivery, an installable APK set derived from the exact bundle.
-- Capture logs around failures and redact user, account, token, and credential data.
-- Prefer deterministic reproduction. Retry only to characterize intermittency.
-- Distinguish product defects, environment failures, test-data problems, policy gaps, and expected behavior.
-- Re-test fixes and the nearest regression surface.
-
-## Completion
-
-Consume the rendered layout matrix and comparison evidence from `$android-ui-layout-engineer`, then independently cover the highest-risk visual states during functional execution. Return reproducible layout defects to that stage without treating a passing screenshot diff as proof of correct behavior.
-
-For every final Play screenshot, verify that the visible app state, data, entitlement, locale, form factor, price, result, and marketing claim are reproducible from the recorded release-candidate commit. Reject retouched UI, invented functionality, personal data, unreadable localized text, wrong device categorization, or a frame whose decorative composition changes the product meaning.
-
-Report scope, complexity target, environments, locales, passed/failed journeys, defects by severity, blocked checks, evidence, and release recommendation. The recommendation must reflect tested scope and residual risk; never infer coverage that was not executed.
+Report tested scope, environments, passed and failed journeys, defects by severity, blocked checks, evidence locations, residual risk, and a release recommendation. Do not infer coverage that was not executed.

@@ -19,6 +19,13 @@ EXPECTED_SKILLS = {
     "android-release-manager",
 }
 
+MAX_DESCRIPTION_CHARS = 180
+MAX_DEFAULT_PROMPT_CHARS = 160
+MAX_ROOT_WORDS = {
+    "android-product-pipeline": 700,
+}
+DEFAULT_MAX_ROOT_WORDS = 450
+
 FORBIDDEN_FILE_NAMES = {
     ".env",
     "keystore.properties",
@@ -72,10 +79,29 @@ def validate_skill(root: Path, name: str, errors: list[str]) -> None:
         fail(errors, f"{name}: frontmatter name does not match folder")
     if not frontmatter.get("description"):
         fail(errors, f"{name}: missing frontmatter description")
+    elif len(frontmatter["description"]) > MAX_DESCRIPTION_CHARS:
+        fail(
+            errors,
+            f"{name}: description exceeds {MAX_DESCRIPTION_CHARS} characters",
+        )
 
-    for relative_ref in re.findall(r"\]\((references/[^)#]+)(?:#[^)]+)?\)", skill_text):
+    word_count = len(re.findall(r"\b[\w’'-]+\b", skill_text, re.UNICODE))
+    word_limit = MAX_ROOT_WORDS.get(name, DEFAULT_MAX_ROOT_WORDS)
+    if word_count > word_limit:
+        fail(errors, f"{name}: SKILL.md has {word_count} words; limit is {word_limit}")
+
+    linked_refs = set(
+        re.findall(r"\]\((references/[^)#]+)(?:#[^)]+)?\)", skill_text)
+    )
+    for relative_ref in linked_refs:
         if not (skill_dir / relative_ref).is_file():
             fail(errors, f"{name}: missing linked reference {relative_ref}")
+    present_refs = {
+        str(path.relative_to(skill_dir))
+        for path in (skill_dir / "references").glob("*.md")
+    } if (skill_dir / "references").is_dir() else set()
+    for unlinked_ref in sorted(present_refs - linked_refs):
+        fail(errors, f"{name}: unlinked reference {unlinked_ref}")
 
     agent_text = agent_path.read_text(encoding="utf-8")
     prompt_match = re.search(r'^\s*default_prompt:\s*"([^"]+)"\s*$', agent_text, re.MULTILINE)
@@ -83,6 +109,11 @@ def validate_skill(root: Path, name: str, errors: list[str]) -> None:
         fail(errors, f"{name}: default_prompt must be a quoted string")
     elif f"${name}" not in prompt_match.group(1):
         fail(errors, f"{name}: default_prompt does not invoke ${name}")
+    elif len(prompt_match.group(1)) > MAX_DEFAULT_PROMPT_CHARS:
+        fail(
+            errors,
+            f"{name}: default_prompt exceeds {MAX_DEFAULT_PROMPT_CHARS} characters",
+        )
 
     short_match = re.search(r'^\s*short_description:\s*"([^"]+)"\s*$', agent_text, re.MULTILINE)
     if not short_match:
@@ -95,6 +126,10 @@ def validate_skill(root: Path, name: str, errors: list[str]) -> None:
 
 
 def validate_package(root: Path, errors: list[str]) -> None:
+    for base_file in ("AGENTS.md", "README.md"):
+        if not (root / base_file).is_file():
+            fail(errors, f"missing base file: {base_file}")
+
     present_skills = {
         path.name
         for path in root.iterdir()
@@ -138,7 +173,10 @@ def main() -> int:
             print(f"ERROR: {error}", file=sys.stderr)
         return 1
 
-    print(f"Validated {len(EXPECTED_SKILLS)} skills; metadata, links, and secret boundaries pass.")
+    print(
+        f"Validated {len(EXPECTED_SKILLS)} skills; metadata, context budgets, "
+        "reference routing, and secret boundaries pass."
+    )
     return 0
 
 

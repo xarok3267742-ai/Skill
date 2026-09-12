@@ -1,41 +1,35 @@
 ---
 name: android-release-manager
-description: Prepare, verify, and deliver Android releases through GitHub and Google Play, including versioning, PR gates, GitHub Actions, Fastlane, AAB upload signing, SSH-signed tags, Octo Browser verification, tracks, rollout, and recovery.
+description: Deliver a verified Android release through GitHub and Google Play. Use for CI, signing, Fastlane, Octo/Console, submission, rollout, or release recovery.
 ---
 
 # Android Release Manager
 
-Turn a tested commit into a traceable, idempotent release. Preserve the user's selected app, GitHub repository, Play account, Octo profile, countries, track, rollout, and desired terminal outcome. An explicit request to build/release/publish plus recorded intake answers authorizes ordinary in-scope GitHub, CI, policy-site, AAB-upload, submission, and rollout operations. Do not ask for another confirmation, including before publishing Google Sites, uploading the verified AAB, sending changes for review, or starting the configured rollout. Treat the release brief and preflight as internal verification, then act. Stop only for a human-only/evidence blocker or when the observed terminal criteria are satisfied.
+Turn one tested commit into an idempotent release for the recorded repository, Play account, package, version, countries, track, and rollout. An explicit build/publish request plus resolved intake authorizes in-scope release actions without another confirmation gate.
 
-## Preflight
+## Route by operation
 
-Resolve the merged commit candidate, application ID, variant, version code/name, form factors, languages, release notes, markets, development budget, store pricing, monetization, public privacy-policy deployment and URL, Play developer account/app, Octo profile, track, rollout, managed-publishing choice, QA/policy disposition, containment plan, and desired terminal outcome. Verify current official Google Play requirements, account eligibility, target SDK rules, form-factor requirements, and app-pricing behavior.
+Read only what the release needs:
 
-For the default `development_budget: 0`, `store_pricing: free`, and `monetization: none` contract, verify before submission that Play marks the app free and that the release candidate, dependency graph, declarations, listing, and Console have no ads, paid download, in-app product, subscription, paywall, donation, or other monetization surface. Do not create a payments profile, product, subscription, purchase, paid service, or trial that can convert to paid. Google Play currently does not allow an app that has been offered free to become paid under the same package name, so record the free-price choice as an irreversible release consequence and re-check the current official pricing rule at release time.
+- [GitHub, CI, and signing](references/github-actions.md) for repository setup, secrets, PR/merge, upload signing, or tags;
+- [Fastlane delivery](references/fastlane-play-delivery.md) for API credentials, lanes, metadata, screenshots, AAB upload, or retry behavior;
+- [Octo publishing](references/octo-publishing.md) for Google Sites, new-app bootstrap, unsupported declarations, or visual Console verification;
+- [rollout and monitoring](references/rollout.md) when choosing, starting, observing, halting, or recovering a rollout.
 
-When the full-publication scope does not specify a track, use production with 100% rollout and do not create optional internal, closed, or open test releases. This does not skip CI or QA. If the selected account/app is not eligible for production because Play mandates testing or another prerequisite, preserve production-ready artifacts and any permitted production draft and report the exact requirement without pretending the production outcome was reached. When the user prohibited testing tracks, do not create a mandatory closed-test release without a new instruction.
+Verify current Play eligibility, target SDK, form-factor requirements, and pricing at release time. Resolve the exact commit, artifact, package/version, certificate, policy URL, locales, countries, track, rollout, QA/policy disposition, and terminal outcome.
 
-Read [references/github-actions.md](references/github-actions.md) before creating a repository, configuring secrets, merging a PR, or building a release. Read [references/fastlane-play-delivery.md](references/fastlane-play-delivery.md) before configuring or using Fastlane for Play delivery. Read [references/octo-publishing.md](references/octo-publishing.md) before operating Play Console or verifying a Fastlane delivery. Read [references/rollout.md](references/rollout.md) before choosing rollout and monitoring thresholds.
+For the default zero-cost/free/no-monetization contract, verify the binary, dependencies, listing, declarations, products, and Console pricing contain no unintended monetization. Do not create payments products, paid services, or auto-converting trials. Record the current Play consequence of offering the package for free.
 
-## Build and verify
+## Build and publish
 
-- Build with the repository's pinned JDK, Gradle wrapper, variants, and documented environment.
-- Run required tests and lint before merge and against the release candidate.
-- Use Play App Signing with a separate upload key; never expose or commit a keystore or password.
-- Verify AAB package ID, version, upload certificate, modules/ABIs, checksum, and installable bundle-derived APK set.
-- Preserve CI run identity, source commit, signed tag, mapping files, native symbols, baseline profiles, and build provenance when produced.
-- Smoke-test the release-like build, including launch, authentication, upgrade, links, notifications, absence or expected behavior of billing/ads, offline behavior, selected locales, and TV/Wear journeys as applicable.
+Use the repository’s pinned toolchain and the exact AAB from the successful GitHub workflow. Verify package, version code, upload certificate, modules, checksum, installable bundle-derived APK set, source commit/tag, and produced mapping/symbol/provenance artifacts. Keep the upload key separate from Play App Signing; never commit or log private signing material.
 
-## Publish idempotently
+Publish or reconcile the app-specific privacy policy before entering its URL in Play. The page must work over HTTPS without login; public text must match observed behavior and must not name the drafting tool.
 
-Before opening Play Console, generate or reconcile the in-scope privacy-policy draft, publish it through the selected Google Site in the selected Octo profile, and verify its canonical HTTPS URL in a fresh unauthenticated session. Record the policy source commit, generator access date in the private release record, Google Sites destination/publication time, content hash, effective date, locales, and final URL. Do not name the generator in the public policy. If an in-scope custom domain is configured, verify ownership and HTTPS; otherwise report the Google-account and Google Sites URL dependency explicitly. Do not publish a generic policy that conflicts with the exact app/package or observed data behavior.
+Prefer pinned `bundle exec fastlane` for repeatable metadata, screenshot, track, rollout, and AAB delivery after required one-time app initialization. Use Octo for that bootstrap, Google Sites, declarations unavailable through the API, and final account/app/status verification. Never run competing browser and Fastlane mutations.
 
-Use the exact artifact downloaded from the successful GitHub run. Prefer a pinned `bundle exec fastlane` lane for repeatable AAB, mapping, metadata, screenshot, track, and rollout delivery after the Play app has completed the required one-time manual initialization. Keep Octo Browser for that bootstrap, declarations not supported by the API, and final visual/state verification. Before upload or retry, inspect Play for the version code, current release status, app price, and monetization products. Verify the visible Google account, developer account, app, package, track, countries, rollout, and free-price setting before mutation.
+Before any retry, inspect the canonical Play state for the version code and release status. After every upload, save, submit, or rollout request, re-read the result. A workflow dispatch, local artifact, API response, click, toast, or page transition is not completion evidence.
 
-After each upload, save, submit, or rollout action, re-read the resulting state. When this skill is the primary coordinator, update the execution checkpoint directly; when it runs as the release subagent, return immutable evidence and let the coordinator update the canonical checkpoint/release record. On timeout or ambiguous feedback, inspect the canonical status page before retrying. Never duplicate a version, release, tag, PR, workflow dispatch, or rollout. A local artifact, dispatched workflow, completed upload request, or transient success message is not sufficient proof of completion.
+Stop and preserve the draft for CAPTCHA, 2FA, reauthentication, changed terms, insufficient permissions, signing mismatch, unknown legal declaration, or changed Console flow. Do not bypass or guess.
 
-Stop with the draft preserved for CAPTCHA, 2FA, reauthentication, changed terms, insufficient permissions, unknown policy declarations, missing reviewer access, changed console flow, or signing-identity mismatch. Do not bypass or guess.
-
-## Handoff
-
-Produce the evidence and content for a release record with commit, verified SSH-signed tag, workflow URL/run ID, artifact path and SHA-256, package/version, upload-certificate fingerprint, policy URL/source/Google Sites publication/content hash, checks and results, approved exceptions, release notes, Play account/track/countries/rollout, monitoring/containment plan, and observed Console status. In multi-agent mode, return it to the coordinator, which alone writes the canonical release record. `In review` is not publicly available.
+Report the commit, verified signed tag, workflow URL/run, AAB path and SHA-256, upload-certificate fingerprint, policy URL/hash, checks, exceptions, Play account/track/countries/rollout, and observed status. `In review` is not publicly available.

@@ -1,6 +1,6 @@
 interface:
   display_name: "Android Release Manager"
-  short_description: "Ship signed Android bundles through GitHub and Play"
-  default_prompt: "Use $android-release-manager to build, verify, sign, and deliver this Android release safely."
+  short_description: "Deliver verified Android releases to Play"
+  default_prompt: "Use $android-release-manager to deliver this verified Android release to Google Play."
 policy:
   allow_implicit_invocation: true
